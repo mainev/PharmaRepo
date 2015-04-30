@@ -22,13 +22,6 @@ import server.rdr.entity.TransferredRawMaterial;
  */
 @Stateless
 public class ReceivedRawMaterialFacade {
-//    @EJB
-//    private RawMaterialFacade rawMaterialFacade;
-//
-//     @EJB
-//    private TransferredRmFacade transferredRmFacade;
-//     
-     
 
     @PersistenceContext(unitName = "PharmaWebServerPU")
     private EntityManager em;
@@ -80,7 +73,6 @@ public class ReceivedRawMaterialFacade {
         
         }
         
-    //   System.out.println(rmStockCard);
        return rmStockCard;
     
     }
