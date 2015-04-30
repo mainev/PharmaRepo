@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rdr.client.ReceivedPackagingMaterialController">
+   <children>
+      <BorderPane fx:id="borderPaneReceivePM" layoutX="10.0" layoutY="10.0" prefHeight="470.0" prefWidth="898.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="1015.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="receivedPMTable" prefHeight="172.0" prefWidth="1015.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="colPMCodeReceivedPm" prefWidth="116.0" text="Code" />
+                        <TableColumn fx:id="colPMDescriptionReceivedPm" prefWidth="352.0" text="Packaging Material" />
+                        <TableColumn fx:id="colRRNumReceivedPm" prefWidth="109.0" text="RR #" />
+                        <TableColumn fx:id="colDRNumReceivedPm" prefWidth="122.0" text="DR #" />
+                        <TableColumn fx:id="colSupplierReceivedPm" prefWidth="176.0" text="Supplier" />
+                        <TableColumn fx:id="colPONumReceivedPm" prefWidth="136.0" text="PO #" />
+                        <TableColumn fx:id="colQuantityReceivedPm" prefWidth="86.0" text="Quantity" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </bottom>
+         <center>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="1015.0" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane fx:id="upperGrid" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="815.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <Label text="Packaging material" textFill="#3c3c3c" />
+                        <Label text="RR no" textFill="#3c3c3c" GridPane.rowIndex="1" />
+                        <Label text="Supplier" textFill="#3c3c3c" GridPane.rowIndex="2" />
+                        <Label text="PO no" textFill="#3c3c3c" GridPane.rowIndex="3" />
+                        <Label text="Quantity" textFill="#3c3c3c" GridPane.columnIndex="2" />
+                        <Label text="Quantity per bundle" textFill="#3c3c3c" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="textFieldSupplierReceivedPm" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin></TextField>
+                        <TextField fx:id="textFieldPONoReceivedPm" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="textFieldQuantityPerBundleReceivedPm" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin></TextField>
+                        <Label text="Unit Cost" textFill="#3c3c3c" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="textFieldUnitCost" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin></TextField>
+                        <TextField fx:id="textFieldQuantityReceivedPm" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="textFieldDRNoReceivedPm" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label prefHeight="21.0" prefWidth="138.0" text="Delivery Receipt No. " textFill="#3c3c3c" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="textFieldRRNoReceivedPm" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <ListView fx:id="listViewFilteredPM" prefHeight="87.0" prefWidth="459.0" visible="false" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="-100.0" left="10.0" right="10.0" top="32.0" />
+                           </GridPane.margin>
+                        </ListView>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="190.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="540.0" minWidth="10.0" prefWidth="255.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="540.0" minWidth="10.0" prefWidth="215.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="540.0" minWidth="10.0" prefWidth="185.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <Button id="ok" layoutX="788.0" layoutY="205.0" mnemonicParsing="false" onAction="#receivePackagingMaterial" prefHeight="31.0" prefWidth="149.0" text="OK" AnchorPane.rightAnchor="60.0" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

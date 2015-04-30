@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1300.0" stylesheets="@mycss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rdr.client.MainViewController">
+    <children>
+        <BorderPane layoutX="95.0" layoutY="58.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <BorderPane prefHeight="123.0" prefWidth="1100.0" style="-fx-background-color: #003926;" BorderPane.alignment="CENTER">
+                    <bottom>
+                        <ToolBar fx:id="toolbarHead" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </ToolBar>
+                    </bottom>
+               <left>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="Segoe UI Light" size="64.0" />
+                            </font>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                        </Text>
+               </left>
+                </BorderPane>
+            </top>
+            <bottom>
+                <AnchorPane prefHeight="47.0" prefWidth="1300.0" style="-fx-background-color: #003926;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="1149.0" layoutY="14.0" text="NutraTech BioPharma Inc." textFill="#c3c3c3" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                     <font>
+                        <Font name="System Italic" size="13.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            </bottom>
+            <left>
+                <AnchorPane prefHeight="508.0" prefWidth="230.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <BorderPane fx:id="borderPaneInventoryMenu" layoutX="22.0" layoutY="69.0" prefHeight="502.0" prefWidth="243.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <top>
+                                <ToolBar id="header" prefHeight="50.0" prefWidth="200.0" stylesheets="@mycss.css" BorderPane.alignment="CENTER">
+                                    <items>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="210.0" text="Menu" />
+                                    </items>
+                                </ToolBar>
+                            </top>
+                        </BorderPane>
+                    </children>
+                </AnchorPane>
+            </left>
+            <center>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <BorderPane layoutX="64.0" layoutY="93.0" prefHeight="502.0" prefWidth="1057.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                            <top>
+                                <AnchorPane id="header-bar" fx:id="anchorPaneContentHead" prefHeight="50.0" prefWidth="1015.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                           <children>
+                              <ChoiceBox id="choice-box-material" fx:id="choiceBoxMaterialType" layoutX="14.0" layoutY="10.0" prefHeight="31.0" prefWidth="179.0" />
+                              <Label fx:id="label1" layoutX="200.0" layoutY="15.0" text="Select material type" textFill="#656565" />
+                           </children></AnchorPane>
+                            </top>
+                            <center>
+                                <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <AnchorPane fx:id="anchorPaneStockCard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0">
+                                            <children>  
+                                                <fx:include source="StockCard.fxml" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane fx:id="anchorPaneHomeView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" style="-fx-background-color: white;" visible="false" />
+                                        <AnchorPane fx:id="anchorPaneTransferRm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" visible="false">
+                                            <children>
+                          
+                                                      <fx:include source="TransferRm.fxml" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane fx:id="anchorPaneReceivedRm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" visible="false">
+                                            <children>
+                          
+                                                      <fx:include source="ReceivedRm.fxml" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane fx:id="anchorPaneReportView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" visible="false">
+                                            <children>
+                                                <fx:include source="Report.fxml" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane fx:id="anchorPaneReceivePmView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" visible="false">
+                                            <children>
+                                                <fx:include source="ReceivedPmFrame.fxml" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane fx:id="anchorPaneTransferPmView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" visible="false">
+                                            <children>
+                                                <fx:include source="TransferPmFrame.fxml" />
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </StackPane>
+                            </center>
+                        </BorderPane>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rdr.client.ReportController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="1015.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_CENTER" layoutX="425.0" layoutY="73.0" prefHeight="470.0" prefWidth="1098.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label text="Choose a type of report:" textFill="#8d8b8b">
+                           <font>
+                              <Font name="Segoe UI Light" size="24.0" />
+                           </font>
+                        </Label>
+                        <GridPane prefHeight="182.0" prefWidth="1098.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Select Report:" textFill="#3c3c3c" />
+                              <Label text="Select Period:" textFill="#3c3c3c" GridPane.columnIndex="1" />
+                              <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <GridPane.margin>
+                                    <Insets left="50.0" />
+                                 </GridPane.margin>
+                                 <children>
+                                    <Label text="Start Date:" textFill="#3c3c3c" />
+                                    <DatePicker fx:id="datePickerStartDate" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <GridPane.margin>
+                                    <Insets left="50.0" />
+                                 </GridPane.margin>
+                                 <children>
+                                    <Label text="End Date:" textFill="#3c3c3c" />
+                                    <DatePicker fx:id="datePickerEndDate" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <RadioButton fx:id="radioButtonRawMaterial" mnemonicParsing="false" text="Raw Material" textFill="#3c3c3c" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="50.0" />
+                                 </GridPane.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="radioButtonPackagingMaterial" mnemonicParsing="false" text="Packaging Material" textFill="#3c3c3c" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="50.0" />
+                                 </GridPane.margin>
+                              </RadioButton>
+                           </children>
+                           <padding>
+                              <Insets left="100.0" right="100.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <AnchorPane prefHeight="51.0" prefWidth="1015.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button id="preview" layoutX="841.0" layoutY="10.0" mnemonicParsing="false" onAction="#handlePreviewButton" prefHeight="31.0" prefWidth="150.0" text="Preview" />
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
