@@ -6,6 +6,7 @@
 package server.mmd.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -73,6 +75,9 @@ public class ReceivedRawMaterial implements Serializable {
     @ManyToOne
     @JoinColumn(name = "raw_material_id", referencedColumnName = "id")
     private RawMaterial rawMaterialId;
+
+    @OneToMany(mappedBy = "receivedRawMaterialId")
+    private Collection<IssuedRawMaterial> mmdIssuedRawMaterialCollection;
 
     public ReceivedRawMaterial() {
     }
@@ -194,4 +199,14 @@ public class ReceivedRawMaterial implements Serializable {
         return "server.mmd.entity.ReceivedRawMaterial[ id=" + id + " ]";
     }
 
+    public Collection<IssuedRawMaterial> getMmdIssuedRawMaterialCollection() {
+        return mmdIssuedRawMaterialCollection;
+    }
+
+    public void setMmdIssuedRawMaterialCollection(Collection<IssuedRawMaterial> mmdIssuedRawMaterialCollection) {
+        this.mmdIssuedRawMaterialCollection = mmdIssuedRawMaterialCollection;
+    }
+
+    
+   
 }

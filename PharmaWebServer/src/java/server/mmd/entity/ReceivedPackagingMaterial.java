@@ -65,7 +65,7 @@ public class ReceivedPackagingMaterial implements Serializable {
     private PackagingMaterial packagingMaterialId;
 
     @OneToMany(mappedBy = "receivedPackagingMaterialId")
-    private Collection<IssuedPackagingMaterial> mmdIssuedPackagingMaterialCollection;
+    private Collection<IssuedPackagingMaterial> mmdTransferredPackagingMaterialCollection;
     
     public ReceivedPackagingMaterial() {
     }
@@ -146,12 +146,12 @@ public class ReceivedPackagingMaterial implements Serializable {
     }
 
     @XmlTransient
-    public Collection<IssuedPackagingMaterial> getMmdIssuedPackagingMaterialCollection() {
-        return mmdIssuedPackagingMaterialCollection;
+    public Collection<IssuedPackagingMaterial> getMmdTransferredPackagingMaterialCollection() {
+        return mmdTransferredPackagingMaterialCollection;
     }
 
-    public void setMmdIssuedPackagingMaterialCollection(Collection<IssuedPackagingMaterial> transferredPmCollection) {
-        this.mmdIssuedPackagingMaterialCollection = transferredPmCollection;
+    public void setMmdTransferredPackagingMaterialCollection(Collection<IssuedPackagingMaterial> transferredPmCollection) {
+        this.mmdTransferredPackagingMaterialCollection = transferredPmCollection;
     }
     
     @Override
