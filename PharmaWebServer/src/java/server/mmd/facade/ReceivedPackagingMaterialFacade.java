@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import server.mmd.entity.ReceivedPackagingMaterial;
 
 /**
  *
@@ -21,10 +22,17 @@ public class ReceivedPackagingMaterialFacade {
     private EntityManager em;
 
     public List<server.mmd.entity.ReceivedPackagingMaterial> findAll() {
-       // System.out.println("string");
         List<server.mmd.entity.ReceivedPackagingMaterial> list = em.createQuery("select r from server.mmd.entity.ReceivedPackagingMaterial r").getResultList();
-        
-        
         return list;
+    }
+    
+    public ReceivedPackagingMaterial create(ReceivedPackagingMaterial rpm){
+        em.persist(rpm);
+        em.flush();
+        return em.find(ReceivedPackagingMaterial.class, rpm.getId());
+    }
+    
+    public ReceivedPackagingMaterial findById(int id){
+        return em.find(ReceivedPackagingMaterial.class, id);
     }
 }

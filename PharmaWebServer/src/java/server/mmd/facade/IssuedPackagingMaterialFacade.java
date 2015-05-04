@@ -25,4 +25,14 @@ public class IssuedPackagingMaterialFacade {
         List<IssuedPackagingMaterial> list =  em.createQuery("select i from server.mmd.entity.IssuedPackagingMaterial i").getResultList();
         return list;
     }
+    
+     public IssuedPackagingMaterial create(IssuedPackagingMaterial ipm) {
+        em.persist(ipm);
+        em.flush();
+        return em.find(IssuedPackagingMaterial.class, ipm.getId());
+    }
+    
+    public IssuedPackagingMaterial findById(int id) {
+        return em.find(IssuedPackagingMaterial.class, id);
+    }
 }

@@ -25,4 +25,15 @@ public class IssuedRawMaterialFacade {
         List<IssuedRawMaterial> list =  em.createQuery("select i from server.mmd.entity.IssuedRawMaterial i").getResultList();
         return list;
     }
+    
+    public IssuedRawMaterial create(IssuedRawMaterial irm) {
+        em.persist(irm);
+        em.flush();
+        return em.find(IssuedRawMaterial.class, irm.getId());
+    }
+    
+    public IssuedRawMaterial findById(int id) {
+        return em.find(IssuedRawMaterial.class, id);
+    }
+    
 }

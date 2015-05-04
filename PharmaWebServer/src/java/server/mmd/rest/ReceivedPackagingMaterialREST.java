@@ -8,52 +8,56 @@ package server.mmd.rest;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
-import server.mmd.entity.IssuedPackagingMaterial;
-import server.mmd.facade.IssuedPackagingMaterialFacade;
+import server.mmd.facade.ReceivedPackagingMaterialFacade;
+import server.mmd.entity.ReceivedPackagingMaterial;
 
 /**
  * REST Web Service
  *
  * @author Maine
  */
-@Path("mmdissuedpm")
+@Path("mmdreceivedpackagingmaterial")
 @RequestScoped
-public class IssuedPackagingMaterialREST {
+public class ReceivedPackagingMaterialREST {
 
     @Context
     private UriInfo context;
 
     @Inject
-    private IssuedPackagingMaterialFacade issuedPackagingMaterialFacade;
+    private ReceivedPackagingMaterialFacade receivedPackagingMaterialFacade;
 
-    public IssuedPackagingMaterialREST() {
+    /**
+     * Creates a new instance of ReceivedPmREST
+     */
+    public ReceivedPackagingMaterialREST() {
     }
 
+    /**
+     * Retrieves representation of an instance of server.mmd.rest.ReceivedPmREST
+     *
+     * @return an instance of java.lang.String
+     */
     @GET
     @Produces("application/json")
-    public List<IssuedPackagingMaterial> getJson() {
-        return issuedPackagingMaterialFacade.findAll();
+    public List<ReceivedPackagingMaterial> getJson() {
+        return receivedPackagingMaterialFacade.findAll();
+
     }
 
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public IssuedPackagingMaterial create(IssuedPackagingMaterial issuedPm) {
-        return issuedPackagingMaterialFacade.create(issuedPm);
+    public ReceivedPackagingMaterial create(ReceivedPackagingMaterial receivedPm) {
+        return receivedPackagingMaterialFacade.create(receivedPm);
     }
 
-    @PUT
-    @Consumes("application/json")
-    public void putJson(String content) {
-    }
 }
