@@ -1,40 +1,4 @@
 --
--- PostgreSQL database cluster dump
---
-
-SET default_transaction_read_only = off;
-
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-
---
--- Roles
---
-
-CREATE ROLE postgres;
-ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION PASSWORD 'md53175bce1d3201d16594cebf9d7eb3f9d';
-
-
-
-
-
-
---
--- Database creation
---
-
-CREATE DATABASE "pharmaDb" WITH TEMPLATE = template0 OWNER = postgres;
-REVOKE ALL ON DATABASE template1 FROM PUBLIC;
-REVOKE ALL ON DATABASE template1 FROM postgres;
-GRANT ALL ON DATABASE template1 TO postgres;
-GRANT CONNECT ON DATABASE template1 TO PUBLIC;
-
-
-\connect "pharmaDb"
-
-SET default_transaction_read_only = off;
-
---
 -- PostgreSQL database dump
 --
 
@@ -116,6 +80,46 @@ CREATE TABLE issued_packaging_material (
 ALTER TABLE mmd.issued_packaging_material OWNER TO postgres;
 
 --
+-- Name: issued_raw_material; Type: TABLE; Schema: mmd; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE issued_raw_material (
+    id integer NOT NULL,
+    quantity double precision,
+    batch_no character varying(10),
+    po_no character varying(10),
+    issued_by character varying(100),
+    dispensed_by character varying(100),
+    unit character varying(5),
+    received_raw_material_id integer,
+    product_id integer
+);
+
+
+ALTER TABLE mmd.issued_raw_material OWNER TO postgres;
+
+--
+-- Name: issued_raw_material_id_seq; Type: SEQUENCE; Schema: mmd; Owner: postgres
+--
+
+CREATE SEQUENCE issued_raw_material_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE mmd.issued_raw_material_id_seq OWNER TO postgres;
+
+--
+-- Name: issued_raw_material_id_seq; Type: SEQUENCE OWNED BY; Schema: mmd; Owner: postgres
+--
+
+ALTER SEQUENCE issued_raw_material_id_seq OWNED BY issued_raw_material.id;
+
+
+--
 -- Name: received_packaging_material; Type: TABLE; Schema: mmd; Owner: postgres; Tablespace: 
 --
 
@@ -152,6 +156,48 @@ ALTER TABLE mmd.received_packaging_material_id_seq OWNER TO postgres;
 --
 
 ALTER SEQUENCE received_packaging_material_id_seq OWNED BY received_packaging_material.id;
+
+
+--
+-- Name: received_raw_material; Type: TABLE; Schema: mmd; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE received_raw_material (
+    id integer NOT NULL,
+    date_received date,
+    quantity double precision,
+    unit character varying(5),
+    batch_no character varying(10),
+    qc_control_no character varying(15),
+    manufacturing_date date,
+    exp_date date,
+    rr_no character varying(10),
+    received_by character varying(50),
+    raw_material_id integer
+);
+
+
+ALTER TABLE mmd.received_raw_material OWNER TO postgres;
+
+--
+-- Name: received_raw_material_id_seq; Type: SEQUENCE; Schema: mmd; Owner: postgres
+--
+
+CREATE SEQUENCE received_raw_material_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE mmd.received_raw_material_id_seq OWNER TO postgres;
+
+--
+-- Name: received_raw_material_id_seq; Type: SEQUENCE OWNED BY; Schema: mmd; Owner: postgres
+--
+
+ALTER SEQUENCE received_raw_material_id_seq OWNED BY received_raw_material.id;
 
 
 --
@@ -500,7 +546,21 @@ ALTER TABLE ONLY issued_packaging_material ALTER COLUMN id SET DEFAULT nextval('
 -- Name: id; Type: DEFAULT; Schema: mmd; Owner: postgres
 --
 
+ALTER TABLE ONLY issued_raw_material ALTER COLUMN id SET DEFAULT nextval('issued_raw_material_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: mmd; Owner: postgres
+--
+
 ALTER TABLE ONLY received_packaging_material ALTER COLUMN id SET DEFAULT nextval('received_packaging_material_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: mmd; Owner: postgres
+--
+
+ALTER TABLE ONLY received_raw_material ALTER COLUMN id SET DEFAULT nextval('received_raw_material_id_seq'::regclass);
 
 
 SET search_path = public, pg_catalog;
@@ -566,11 +626,237 @@ ALTER TABLE ONLY transferred_raw_material ALTER COLUMN id SET DEFAULT nextval('t
 SET search_path = mmd, pg_catalog;
 
 --
+-- Data for Name: issued_packaging_material; Type: TABLE DATA; Schema: mmd; Owner: postgres
+--
+
+INSERT INTO issued_packaging_material VALUES (1, 56, 'ml', 1, 'asd', 'asd', 1, NULL);
+
+
+--
+-- Data for Name: issued_raw_material; Type: TABLE DATA; Schema: mmd; Owner: postgres
+--
+
+
+
+--
+-- Name: issued_raw_material_id_seq; Type: SEQUENCE SET; Schema: mmd; Owner: postgres
+--
+
+SELECT pg_catalog.setval('issued_raw_material_id_seq', 1, false);
+
+
+--
+-- Data for Name: received_packaging_material; Type: TABLE DATA; Schema: mmd; Owner: postgres
+--
+
+INSERT INTO received_packaging_material VALUES (1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+
+
+--
+-- Name: received_packaging_material_id_seq; Type: SEQUENCE SET; Schema: mmd; Owner: postgres
+--
+
+SELECT pg_catalog.setval('received_packaging_material_id_seq', 1, true);
+
+
+--
+-- Data for Name: received_raw_material; Type: TABLE DATA; Schema: mmd; Owner: postgres
+--
+
+
+
+--
+-- Name: received_raw_material_id_seq; Type: SEQUENCE SET; Schema: mmd; Owner: postgres
+--
+
+SELECT pg_catalog.setval('received_raw_material_id_seq', 1, false);
+
+
+--
+-- Name: transferred_packaging_material_id_seq; Type: SEQUENCE SET; Schema: mmd; Owner: postgres
+--
+
+SELECT pg_catalog.setval('transferred_packaging_material_id_seq', 1, true);
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO client VALUES (1, 'APT-HEALTH');
+
+
+--
+-- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('client_id_seq', 1, true);
+
+
+--
+-- Data for Name: packaging_material; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO packaging_material VALUES (1, 'pm1', 'laptop', 1);
+
+
+--
+-- Name: packaging_material_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('packaging_material_id_seq', 1, true);
+
+
+--
+-- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO product VALUES (1, 'p11', 'brandx', 'na', 'LIQUID', 1);
+
+
+--
+-- Name: product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('product_id_seq', 1, true);
+
+
+--
+-- Data for Name: raw_material; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO raw_material VALUES (1, 'ww', 'water', 'clear', 'LIQUID', 1);
+
+
+--
+-- Name: raw_material_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('raw_material_id_seq', 1, true);
+
+
+SET search_path = rdr, pg_catalog;
+
+--
+-- Data for Name: received_packaging_material; Type: TABLE DATA; Schema: rdr; Owner: postgres
+--
+
+INSERT INTO received_packaging_material VALUES (3, 'dd', NULL, 'dd', 60, NULL, 35, '2015-04-27', 'dd', '4re', 1, 22);
+INSERT INTO received_packaging_material VALUES (4, 'okj', NULL, 'jjko', 90, NULL, 60, '2015-04-27', 'ikj', '9oik', 1, 73);
+INSERT INTO received_packaging_material VALUES (5, 'fdve', NULL, 'jjko', 90, NULL, 60, '2015-04-27', 'ikj', '9oik', 1, 73);
+INSERT INTO received_packaging_material VALUES (6, 'bnmk', NULL, 'hh', 80, NULL, 40, '2015-04-27', 'hh', 'efsa', 1, 35);
+INSERT INTO received_packaging_material VALUES (7, 'plo', NULL, 'hjko', 90, NULL, 30, '2015-04-27', 'mmkl', 'hjk', 1, 56);
+INSERT INTO received_packaging_material VALUES (8, 'wdfvb', NULL, '4444', 100, NULL, 50, '2015-04-27', '3444', '33e', 1, 34);
+
+
+--
+-- Name: received_pm_id_seq; Type: SEQUENCE SET; Schema: rdr; Owner: postgres
+--
+
+SELECT pg_catalog.setval('received_pm_id_seq', 8, true);
+
+
+--
+-- Data for Name: received_raw_material; Type: TABLE DATA; Schema: rdr; Owner: postgres
+--
+
+INSERT INTO received_raw_material VALUES ('fff', 'fff', '2015-04-27', '2015-04-17', 60, 'L', 30, 4, 1, 35);
+INSERT INTO received_raw_material VALUES ('SSSSS', 'SSSSSS', '2015-04-27', '2017-04-15', 90, 'L', 35, 5, 1, 25);
+INSERT INTO received_raw_material VALUES ('werty', 'werty', '2015-04-27', '2017-04-14', 60, 'L', 25, 6, 1, 22);
+INSERT INTO received_raw_material VALUES ('aaaa', 'aaaa', '2015-04-27', '2015-04-17', 60, 'L', 25, 7, 1, 55);
+INSERT INTO received_raw_material VALUES ('thg', 'vbn', '2015-04-27', '2016-04-23', 100, 'mcL', 50, 8, 1, 2);
+INSERT INTO received_raw_material VALUES ('bbb', 'wbbb', '2015-04-30', '2016-04-09', 90, 'L', 35, 9, 1, 55);
+
+
+--
+-- Name: received_rm_id_seq; Type: SEQUENCE SET; Schema: rdr; Owner: postgres
+--
+
+SELECT pg_catalog.setval('received_rm_id_seq', 9, true);
+
+
+--
+-- Data for Name: transferred_packaging_material; Type: TABLE DATA; Schema: rdr; Owner: postgres
+--
+
+INSERT INTO transferred_packaging_material VALUES ('2015-04-27', 'fff', 'ffff', 25, 2, 'QUARANTINE', true, 4, 3);
+INSERT INTO transferred_packaging_material VALUES (NULL, NULL, NULL, 35, 1, 'APPROVED', false, 5, 3);
+INSERT INTO transferred_packaging_material VALUES (NULL, NULL, NULL, 60, 1, 'QUARANTINE', false, 7, 4);
+INSERT INTO transferred_packaging_material VALUES (NULL, NULL, NULL, 30, 2, 'QUARANTINE', false, 8, 5);
+INSERT INTO transferred_packaging_material VALUES (NULL, NULL, NULL, 60, 1, 'QUARANTINE', false, 9, 5);
+INSERT INTO transferred_packaging_material VALUES (NULL, NULL, NULL, 40, 2, 'QUARANTINE', false, 10, 6);
+INSERT INTO transferred_packaging_material VALUES (NULL, NULL, NULL, 30, 3, 'QUARANTINE', false, 12, 7);
+INSERT INTO transferred_packaging_material VALUES ('2015-04-27', 'sd', 'sd', 30, 2, 'QUARANTINE', true, 6, 4);
+INSERT INTO transferred_packaging_material VALUES ('2015-04-27', 'hehehe', 'hehehe', 25, 1, 'QUARANTINE', true, 15, 7);
+INSERT INTO transferred_packaging_material VALUES ('2015-04-27', 'plmn', 'ooooi', 5, 1, 'QUARANTINE', true, 14, 7);
+INSERT INTO transferred_packaging_material VALUES ('2015-04-27', 'ghgvhvhg', 'nbcf', 30, 2, 'QUARANTINE', true, 13, 7);
+INSERT INTO transferred_packaging_material VALUES ('2015-04-27', 'sdsd', 'adeg', 40, 1, 'QUARANTINE', true, 11, 6);
+INSERT INTO transferred_packaging_material VALUES (NULL, NULL, NULL, 50, 2, 'QUARANTINE', false, 16, 8);
+INSERT INTO transferred_packaging_material VALUES ('2015-04-27', 'we3', 'wed3', 50, 1, 'QUARANTINE', true, 17, 8);
+
+
+--
+-- Name: transferred_pm_id_seq; Type: SEQUENCE SET; Schema: rdr; Owner: postgres
+--
+
+SELECT pg_catalog.setval('transferred_pm_id_seq', 17, true);
+
+
+--
+-- Data for Name: transferred_raw_material; Type: TABLE DATA; Schema: rdr; Owner: postgres
+--
+
+INSERT INTO transferred_raw_material VALUES (true, 'sss', 'sss', '2015-04-27', 'L', 30, 2, 4, 1, 4, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 30, 1, 3, NULL, 4, 'APPROVED');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 35, 2, 5, NULL, 5, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 35, 1, 6, NULL, 5, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (true, 'FFF', 'FFFF', '2015-04-27', 'L', 20, 3, 7, 1, 5, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 10, 3, 8, NULL, 6, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 25, 1, 9, NULL, 6, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 25, 2, 10, NULL, 6, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 10, 3, 11, NULL, 7, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 25, 2, 12, NULL, 7, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 25, 1, 13, NULL, 7, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'mcL', 50, 1, 14, NULL, 8, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (true, 'ddd', 'dddd', '2015-04-27', 'mcL', 50, 2, 15, 1, 8, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 35, 1, 16, NULL, 9, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 20, 3, 17, NULL, 9, 'QUARANTINE');
+INSERT INTO transferred_raw_material VALUES (false, NULL, NULL, NULL, 'L', 35, 2, 18, NULL, 9, 'QUARANTINE');
+
+
+--
+-- Name: transferred_rm_id_seq; Type: SEQUENCE SET; Schema: rdr; Owner: postgres
+--
+
+SELECT pg_catalog.setval('transferred_rm_id_seq', 18, true);
+
+
+SET search_path = mmd, pg_catalog;
+
+--
+-- Name: issued_raw_material_pkey; Type: CONSTRAINT; Schema: mmd; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY issued_raw_material
+    ADD CONSTRAINT issued_raw_material_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: received_packaging_material_pkey; Type: CONSTRAINT; Schema: mmd; Owner: postgres; Tablespace: 
 --
 
 ALTER TABLE ONLY received_packaging_material
     ADD CONSTRAINT received_packaging_material_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: received_raw_material_pkey; Type: CONSTRAINT; Schema: mmd; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY received_raw_material
+    ADD CONSTRAINT received_raw_material_pkey PRIMARY KEY (id);
 
 
 --
@@ -676,11 +962,35 @@ ALTER TABLE ONLY issued_packaging_material
 
 
 --
+-- Name: issued_raw_material_product_id_fkey; Type: FK CONSTRAINT; Schema: mmd; Owner: postgres
+--
+
+ALTER TABLE ONLY issued_raw_material
+    ADD CONSTRAINT issued_raw_material_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.product(id);
+
+
+--
+-- Name: issued_raw_material_received_raw_material_id_fkey; Type: FK CONSTRAINT; Schema: mmd; Owner: postgres
+--
+
+ALTER TABLE ONLY issued_raw_material
+    ADD CONSTRAINT issued_raw_material_received_raw_material_id_fkey FOREIGN KEY (received_raw_material_id) REFERENCES received_raw_material(id);
+
+
+--
 -- Name: received_packaging_material_packaging_material_id_fkey; Type: FK CONSTRAINT; Schema: mmd; Owner: postgres
 --
 
 ALTER TABLE ONLY received_packaging_material
     ADD CONSTRAINT received_packaging_material_packaging_material_id_fkey FOREIGN KEY (packaging_material_id) REFERENCES public.packaging_material(id);
+
+
+--
+-- Name: received_raw_material_raw_material_id_fkey; Type: FK CONSTRAINT; Schema: mmd; Owner: postgres
+--
+
+ALTER TABLE ONLY received_raw_material
+    ADD CONSTRAINT received_raw_material_raw_material_id_fkey FOREIGN KEY (raw_material_id) REFERENCES public.raw_material(id);
 
 
 SET search_path = public, pg_catalog;
@@ -763,109 +1073,5 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 --
 -- PostgreSQL database dump complete
---
-
-\connect postgres
-
-SET default_transaction_read_only = off;
-
---
--- PostgreSQL database dump
---
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-
---
--- Name: postgres; Type: COMMENT; Schema: -; Owner: postgres
---
-
-COMMENT ON DATABASE postgres IS 'default administrative connection database';
-
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- PostgreSQL database dump complete
---
-
-\connect template1
-
-SET default_transaction_read_only = off;
-
---
--- PostgreSQL database dump
---
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-
---
--- Name: template1; Type: COMMENT; Schema: -; Owner: postgres
---
-
-COMMENT ON DATABASE template1 IS 'default template for new databases';
-
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- PostgreSQL database dump complete
---
-
---
--- PostgreSQL database cluster dump complete
 --
 
