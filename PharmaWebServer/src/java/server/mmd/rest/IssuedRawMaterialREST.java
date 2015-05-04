@@ -61,4 +61,6 @@ public class IssuedRawMaterialREST {
     @Consumes("application/json")
     public void putJson(String content) {
     }
+    
+    
 }

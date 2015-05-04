@@ -13,8 +13,10 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.core.MediaType;
 import server.mmd.entity.ReceivedRawMaterial;
 import server.mmd.facade.ReceivedRawMaterialFacade;
 
@@ -50,14 +52,17 @@ public class ReceivedRawMaterialREST {
     public List<ReceivedRawMaterial> getJson() {
         return receivedRmFacade.findAll();
     }
+    
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public ReceivedRawMaterial create(ReceivedRawMaterial receivedRm) {
+        return receivedRmFacade.create(receivedRm);
+    }
 
-    /**
-     * PUT method for updating or creating an instance of
-     * ReceivedRawMaterialREST
-     *
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
-     */
+   
+    
     @PUT
     @Consumes("application/json")
     public void putJson(String content) {
