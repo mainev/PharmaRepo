@@ -1,0 +1,65 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package server.mmd.rest;
+
+import java.util.List;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PUT;
+import server.mmd.entity.ReceivedRawMaterial;
+import server.mmd.facade.ReceivedRawMaterialFacade;
+
+/**
+ * REST Web Service
+ *
+ * @author maine
+ */
+@Path("mmdreceivedrawmaterial")
+@RequestScoped
+public class ReceivedRawMaterialREST {
+
+    @Context
+    private UriInfo context;
+
+    @Inject
+    private ReceivedRawMaterialFacade receivedRmFacade;
+
+    /**
+     * Creates a new instance of ReceivedRawMaterialREST
+     */
+    public ReceivedRawMaterialREST() {
+    }
+
+    /**
+     * Retrieves representation of an instance of
+     * server.mmd.rest.ReceivedRawMaterialREST
+     *
+     * @return an instance of java.lang.String
+     */
+    @GET
+    @Produces("application/json")
+    public List<ReceivedRawMaterial> getJson() {
+        return receivedRmFacade.findAll();
+    }
+
+    /**
+     * PUT method for updating or creating an instance of
+     * ReceivedRawMaterialREST
+     *
+     * @param content representation for the resource
+     * @return an HTTP response with content of the updated or created resource.
+     */
+    @PUT
+    @Consumes("application/json")
+    public void putJson(String content) {
+    }
+}

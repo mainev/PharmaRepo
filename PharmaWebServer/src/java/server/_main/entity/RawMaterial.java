@@ -31,11 +31,12 @@ import server.rdr.entity.ReceivedRawMaterial;
  * @author Maine
  */
 @Entity
-@Table(name = "raw_material", schema="public")
+@Table(name = "raw_material", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "RawMaterial.findAll", query = "SELECT r FROM RawMaterial r")})
 public class RawMaterial implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,8 +58,11 @@ public class RawMaterial implements Serializable {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @ManyToOne
     private Client clientId;
-      @OneToMany(cascade = CascadeType.ALL, mappedBy = "rawMaterialId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rawMaterialId")
     private Collection<ReceivedRawMaterial> receivedRmCollection;
+
+    @OneToMany(mappedBy = "rawMaterialId")
+    private Collection<server.mmd.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection;
 
     public RawMaterial() {
     }
@@ -115,6 +119,8 @@ public class RawMaterial implements Serializable {
         this.clientId = clientId;
     }
 
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -139,7 +145,7 @@ public class RawMaterial implements Serializable {
     public String toString() {
         return "server.entity.RawMaterial[ id=" + id + " ]";
     }
-    
+
     @XmlTransient
     @JsonIgnore
     public Collection<ReceivedRawMaterial> getReceivedRmCollection() {
@@ -151,4 +157,13 @@ public class RawMaterial implements Serializable {
     }
 
     
+    @XmlTransient
+    @JsonIgnore
+    public Collection<server.mmd.entity.ReceivedRawMaterial> getMmdReceivedRawMaterialCollection() {
+        return mmdReceivedRawMaterialCollection;
+    }
+
+    public void setMmdReceivedRawMaterialCollection(Collection<server.mmd.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection) {
+        this.mmdReceivedRawMaterialCollection = mmdReceivedRawMaterialCollection;
+    }
 }

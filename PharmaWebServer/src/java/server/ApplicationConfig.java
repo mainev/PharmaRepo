@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(server._main.rest.RawMaterialREST.class);
         resources.add(server.mmd.rest.IssuedPackagingMaterialREST.class);
         resources.add(server.mmd.rest.ReceivedPmREST.class);
+        resources.add(server.mmd.rest.ReceivedRawMaterialREST.class);
         resources.add(server.rdr.rest.ReceivedPackagingMaterialREST.class);
         resources.add(server.rdr.rest.ReceivedRawMaterialREST.class);
         resources.add(server.rdr.rest.TransferredPackagingMaterialREST.class);

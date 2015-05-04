@@ -6,7 +6,6 @@
 package server.mmd.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,78 +14,71 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import server._main.entity.PackagingMaterial;
+import server._main.entity.RawMaterial;
 
 /**
  *
- * @author Maine
+ * @author maine
  */
-@Entity(name = "mmd.received_packaging_material")
-@Table(name = "received_packaging_material", schema = "mmd")
+@Entity(name = "mmd.received_raw_material")
+@Table(name = "received_raw_material", schema = "mmd")
 @XmlRootElement
-public class ReceivedPackagingMaterial implements Serializable {
+public class ReceivedRawMaterial implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Integer id;
 
     @Column(name = "date_received")
     @Temporal(TemporalType.DATE)
     private Date dateReceived;
-    @Size(max = 10)
-    @Column(name = "rr_no")
-    private String rrNo;
+
     @Column(name = "quantity")
     private Double quantity;
-    @Size(max = 5)
+
     @Column(name = "unit")
+    @Size(max = 5)
     private String unit;
-    @Size(max = 15)
+
+    @Column(name = "batch_no")
+    @Size(max = 10)
+    private String batchNo;
+
     @Column(name = "qc_control_no")
+    @Size(max = 15)
     private String qcControlNo;
-    @Size(max = 50)
+
+    @Column(name = "manufacturing_date")
+    @Temporal(TemporalType.DATE)
+    private Date manufacturingDate;
+
+    @Column(name = "exp_date")
+    @Temporal(TemporalType.DATE)
+    private Date expDate;
+
+    @Column(name = "rr_no")
+    @Size(max = 10)
+    private String rrNo;
+
     @Column(name = "received_by")
+    @Size(max = 50)
     private String receivedBy;
 
-//    @Column(name = "packaging_material_id")
-//    private Integer packagingMaterialId;
-    
     @ManyToOne
-    @JoinColumn(name = "packaging_material_id", referencedColumnName = "id")
-    private PackagingMaterial packagingMaterialId;
+    @JoinColumn(name = "raw_material_id", referencedColumnName = "id")
+    private RawMaterial rawMaterialId;
 
-    @OneToMany(mappedBy = "receivedPackagingMaterialId")
-    private Collection<IssuedPackagingMaterial> mmdIssuedPackagingMaterialCollection;
-    
-    public ReceivedPackagingMaterial() {
+    public ReceivedRawMaterial() {
     }
 
-    public ReceivedPackagingMaterial(Integer id) {
+    public ReceivedRawMaterial(Integer id) {
         this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
     }
 
     public Date getDateReceived() {
@@ -95,14 +87,6 @@ public class ReceivedPackagingMaterial implements Serializable {
 
     public void setDateReceived(Date dateReceived) {
         this.dateReceived = dateReceived;
-    }
-
-    public String getRrNo() {
-        return rrNo;
-    }
-
-    public void setRrNo(String rrNo) {
-        this.rrNo = rrNo;
     }
 
     public Double getQuantity() {
@@ -121,12 +105,44 @@ public class ReceivedPackagingMaterial implements Serializable {
         this.unit = unit;
     }
 
+    public String getBatchNo() {
+        return batchNo;
+    }
+
+    public void setBatchNo(String batchNo) {
+        this.batchNo = batchNo;
+    }
+
     public String getQcControlNo() {
         return qcControlNo;
     }
 
     public void setQcControlNo(String qcControlNo) {
         this.qcControlNo = qcControlNo;
+    }
+
+    public Date getManufacturingDate() {
+        return manufacturingDate;
+    }
+
+    public void setManufacturingDate(Date manufacturingDate) {
+        this.manufacturingDate = manufacturingDate;
+    }
+
+    public Date getExpDate() {
+        return expDate;
+    }
+
+    public void setExpDate(Date expDate) {
+        this.expDate = expDate;
+    }
+
+    public String getRrNo() {
+        return rrNo;
+    }
+
+    public void setRrNo(String rrNo) {
+        this.rrNo = rrNo;
     }
 
     public String getReceivedBy() {
@@ -137,29 +153,36 @@ public class ReceivedPackagingMaterial implements Serializable {
         this.receivedBy = receivedBy;
     }
 
-    public PackagingMaterial getPackagingMaterialId() {
-        return packagingMaterialId;
+    public RawMaterial getRawMaterialId() {
+        return rawMaterialId;
     }
 
-    public void setPackagingMaterialId(PackagingMaterial packagingMaterialId) {
-        this.packagingMaterialId = packagingMaterialId;
+    public void setRawMaterialId(RawMaterial rawMaterialId) {
+        this.rawMaterialId = rawMaterialId;
     }
 
-    @XmlTransient
-    public Collection<IssuedPackagingMaterial> getMmdIssuedPackagingMaterialCollection() {
-        return mmdIssuedPackagingMaterialCollection;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMmdIssuedPackagingMaterialCollection(Collection<IssuedPackagingMaterial> transferredPmCollection) {
-        this.mmdIssuedPackagingMaterialCollection = transferredPmCollection;
+    public void setId(int id) {
+        this.id = id;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof ReceivedPackagingMaterial)) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof ReceivedRawMaterial)) {
             return false;
         }
-        ReceivedPackagingMaterial other = (ReceivedPackagingMaterial) object;
+        ReceivedRawMaterial other = (ReceivedRawMaterial) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -168,7 +191,7 @@ public class ReceivedPackagingMaterial implements Serializable {
 
     @Override
     public String toString() {
-        return "server.mmd.entity.ReceivedPackagingMateral[ id=" + id + " ]";
+        return "server.mmd.entity.ReceivedRawMaterial[ id=" + id + " ]";
     }
 
 }
