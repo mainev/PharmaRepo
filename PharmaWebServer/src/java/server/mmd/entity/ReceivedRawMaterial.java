@@ -21,6 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import server._main.entity.RawMaterial;
 
 /**
@@ -199,6 +200,7 @@ public class ReceivedRawMaterial implements Serializable {
         return "server.mmd.entity.ReceivedRawMaterial[ id=" + id + " ]";
     }
 
+     @XmlTransient
     public Collection<IssuedRawMaterial> getMmdIssuedRawMaterialCollection() {
         return mmdIssuedRawMaterialCollection;
     }

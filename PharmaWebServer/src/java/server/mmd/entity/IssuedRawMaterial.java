@@ -25,11 +25,9 @@ import server._main.entity.Product;
  *
  * @author maine
  */
-@Entity
-@Table(name = "issued_raw_material")
+@Entity(name="mmd.issued_raw_material")
+@Table(name = "issued_raw_material", schema="mmd")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "IssuedRawMaterial.findAll", query = "SELECT i FROM IssuedRawMaterial i")})
 public class IssuedRawMaterial implements Serializable {
 
     private static final long serialVersionUID = 1L;
