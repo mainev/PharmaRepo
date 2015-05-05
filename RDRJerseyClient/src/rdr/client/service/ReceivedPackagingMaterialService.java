@@ -26,8 +26,8 @@ import rdr.client.utils.ReceivedPackagingMaterialSerializer;
  * @author jemuel
  */
 public class ReceivedPackagingMaterialService {
-    
-      private DefaultClientConfig defaultClientConfig;
+
+    private DefaultClientConfig defaultClientConfig;
     private Client client;
     private WebResource webResource;
     private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/receivedpm";
@@ -55,37 +55,34 @@ public class ReceivedPackagingMaterialService {
         return allReceivedPms;
     }
 
-    public ReceivedPackagingMaterial addReceivedPm(ReceivedPackagingMaterial rpm) throws UniformInterfaceException{
+    public ReceivedPackagingMaterial addReceivedPm(ReceivedPackagingMaterial rpm) throws UniformInterfaceException {
         ReceivedPackagingMaterialSerializer rps = new ReceivedPackagingMaterialSerializer();
         String output = "";
-            
+
 //        try {
 //
 //            Client client = Client.create();
+        webResource = client.resource(BASE_URI + "/add");
 
-            webResource = client.resource(BASE_URI + "/add");
+        String input = rps.serializeReceivedPm(rpm);
 
-            String input = rps.serializeReceivedPm(rpm);
-
-            ClientResponse response = webResource.type("application/json")
-                    .post(ClientResponse.class, input);
+        ClientResponse response = webResource.type("application/json")
+                .post(ClientResponse.class, input);
 
 //		if (response.getStatus() != 201) {
 //			throw new RuntimeException("Failed : HTTP error code : "
 //			     + response.getStatus());
 //		}
-         //   System.out.println("Output from Server .... \n");
-            output = response.getEntity(String.class);
+        //   System.out.println("Output from Server .... \n");
+        output = response.getEntity(String.class);
          //   System.out.println(output);
-            
-           
+
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
 //        
-         return rps.deserialize(output);
+        return rps.deserialize(output);
     }
-
 
 //    public  ObservableList<ReceivedRm> getTransferableRmList(RawMaterial rawmat) {
 //        ObservableList<ReceivedRm> transferrableRmList = FXCollections.observableArrayList();
@@ -102,15 +99,15 @@ public class ReceivedPackagingMaterialService {
 //      //  System.out.println(transferrableRmList);
 //       return transferrableRmList;
 //    }
-
-     /**
+    /**
      * Returns a list of packaging materials received between two dates.
+     *
      * @param startDate
      * @param endDate
-     * @return 
+     * @return
      */
     public List<PackagingMaterialStockCard> getReceivedPmBetweenDates(Date startDate, Date endDate) {
-      //  List<RMStockCard> rmStockCard = new ArrayList();
+        //  List<RMStockCard> rmStockCard = new ArrayList();
         webResource = client.resource(BASE_URI + "/pmstockcard");
         ClientResponse response = webResource
                 .queryParam("startDate", DateFormatter.convertToString(startDate))
@@ -124,5 +121,5 @@ public class ReceivedPackagingMaterialService {
         return rms.deserializeList(jsonOutput);
 
     }
-   
+
 }
