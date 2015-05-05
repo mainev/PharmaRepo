@@ -40,7 +40,7 @@ public class ReceivedPackagingMaterial implements Serializable {
     private Integer id;
 
     @Column(name = "date_received")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateReceived;
     @Size(max = 10)
     @Column(name = "rr_no")

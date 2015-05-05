@@ -24,7 +24,7 @@ import server.mmd.entity.ReceivedPackagingMaterial;
  *
  * @author Maine
  */
-@Path("mmdreceivedpackagingmaterial")
+@Path("mmd/received/packagingmaterial")
 @RequestScoped
 public class ReceivedPackagingMaterialREST {
 
