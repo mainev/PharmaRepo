@@ -21,6 +21,8 @@ public class client extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("view/Mainframe.fxml"));
 
+      //  root.getChildrenUnmodifiable().get(0).
+        
         Scene scene = new Scene(root);
        
         stage.setScene(scene);

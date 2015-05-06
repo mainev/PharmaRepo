@@ -19,13 +19,17 @@ import javafx.scene.control.TableColumn;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import mmd.client.controls.ControlledScreen;
+import mmd.client.controls.ScreensController;
+
 
 /**
  *
  * @author maine
  */
-public class ReceiveController implements Initializable {
+public class ReceiveController implements Initializable, ControlledScreen {
 
+     ScreensController myController;
     /*************TABLE COLUMNS**********************/
     @FXML
     TableColumn _colCode;
@@ -68,4 +72,12 @@ public class ReceiveController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void setScreenParent(ScreensController screenParent) {
+        myController = screenParent;
+    }
+    
+    
+   
 }

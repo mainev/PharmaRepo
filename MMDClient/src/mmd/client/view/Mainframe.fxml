@@ -25,20 +25,7 @@
                </children></AnchorPane>
          </bottom>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <StackPane prefHeight="540.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                         <AnchorPane fx:id="_anchorPaneReceive" prefHeight="200.0" prefWidth="200.0">
-                               <children>
-                          
-                                                      <fx:include source="ReceivePackagingMaterialView.fxml" />
-                                            </children>
-                             
-                         </AnchorPane>
-                     </children></StackPane>
-               </children>
-            </AnchorPane>
+            <AnchorPane fx:id="_anchorPaneMainContent" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
          <left>
             <AnchorPane prefHeight="600.0" prefWidth="226.0" BorderPane.alignment="CENTER">
