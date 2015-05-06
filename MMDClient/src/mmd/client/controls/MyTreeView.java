@@ -19,7 +19,8 @@ public class MyTreeView extends TreeView<String> {
     public MyTreeView() {
          TreeItem<String> itemReceiveNode = new TreeItem("Receive");
         TreeItem<String> itemTransferNode = new TreeItem("Transfer");
-        root.getChildren().addAll(  itemReceiveNode,itemTransferNode);
+        TreeItem<String> itemReportNode = new TreeItem("Report");
+        root.getChildren().addAll(  itemReceiveNode,itemTransferNode, itemReportNode);
 
         this.setRoot(root);
         this.setShowRoot(false);

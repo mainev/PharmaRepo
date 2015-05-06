@@ -39,10 +39,13 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("initializing main controller");
         configureMenu();
-
+        
+      
     }
 
-    private void configureMenu() {
+    private void configureMenu() {    
+        
+        //packaging material
         _anchorPanePackagingMaterialMenu.getChildren().add(treeViewMainMenu);
         treeViewMainMenu.getSelectionModel().selectedItemProperty().addListener(
                 (ob, ov, nv) -> {
@@ -53,6 +56,21 @@ public class MainController implements Initializable {
                         openReceivePackagingMaterial();
                     } else if (child.equals("Transfer")) {
                         openReceiveRawMaterial();
+                    }
+                });
+        
+        //raw material
+        MyTreeView treeViewRawMatMenu = new MyTreeView();
+        _anchorPaneRawMaterialMenu.getChildren().add(treeViewRawMatMenu);
+        treeViewRawMatMenu.getSelectionModel().selectedItemProperty().addListener(
+                (ob, ov, nv) -> {
+                    String parent = nv.parentProperty().get().getValue();
+                    String child = nv.getValue();
+
+                    if (child.equals("Receive")) {
+                        openReceiveRawMaterial();
+                    } else if (child.equals("Transfer")) {
+//                        openReceiveRawMaterial();
                     }
                 });
     }

@@ -9,8 +9,9 @@
       <BorderPane layoutX="40.0" layoutY="38.0" prefHeight="600.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-             
-            </ToolBar>
+               <items>
+                  <Button mnemonicParsing="false" onAction="#handleNewReceiveButton" prefHeight="25.0" prefWidth="63.0" text="New" />
+               </items></ToolBar>
          </top>
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
