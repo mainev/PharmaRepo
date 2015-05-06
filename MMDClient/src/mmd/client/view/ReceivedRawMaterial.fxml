@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1140.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mmd.client.ReceivedRawMaterialController">
+   <children>
+      <BorderPane layoutX="40.0" layoutY="38.0" prefHeight="600.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+             
+            </ToolBar>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView layoutX="78.0" layoutY="71.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <columns>
+                      <TableColumn fx:id="_colCode" prefWidth="93.0" text="Code" />
+                      <TableColumn fx:id="_colDescription" prefWidth="444.0" text="Name" />
+                        <TableColumn fx:id="_colDateReceived" prefWidth="119.0" text="Date Received" />
+                        <TableColumn fx:id="_colRrNo" prefWidth="83.0" text="RR No" />
+                        <TableColumn fx:id="_colQuantity" prefWidth="84.0" text="Quantity" />
+                        <TableColumn fx:id="_colUnit" prefWidth="65.0" text="Unit" />
+                        <TableColumn fx:id="_colQcControlNo" prefWidth="108.0" text="QC Control No" />
+                        <TableColumn fx:id="_colReceivedBy" prefWidth="123.0" text="Received By" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
