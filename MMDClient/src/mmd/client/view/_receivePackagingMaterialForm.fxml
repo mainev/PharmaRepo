@@ -39,7 +39,7 @@
                           </rowConstraints>
                            <children>
                               <Label text="Unit" GridPane.columnIndex="1" />
-                              <TextField>
+                              <TextField fx:id="_textFieldQuantity">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin></TextField>
@@ -50,15 +50,15 @@
                            </children>
                         </GridPane>
                         <Label text="Received by" GridPane.rowIndex="4" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="_textFieldRrNo" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin></TextField>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="_textFieldQcControlNo" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin></TextField>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <TextField fx:id="_textFieldReceivedBy" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin></TextField>
@@ -72,7 +72,8 @@
                <children>
                   <HBox alignment="CENTER_RIGHT" layoutX="417.0" layoutY="-36.0" prefHeight="64.0" prefWidth="617.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="OK" />
+                        <Button fx:id="_buttonOk" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="25.0" prefWidth="100.0" text="Add" />
+                        <Button mnemonicParsing="false" onAction="#handleAddAndRepeatButton" prefWidth="100.0" text="Add &amp; Repeat" />
                         <Button fx:id="_buttonCancel" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="25.0" prefWidth="100.0" text="Cancel" />
                      </children>
                   </HBox>

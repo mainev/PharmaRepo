@@ -10,7 +10,7 @@
          <top>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" onAction="#handleNewReceiveButton" prefHeight="25.0" prefWidth="63.0" text="New" />
+                <Button mnemonicParsing="false" onAction="#handleNewButton" prefHeight="25.0" prefWidth="100.0" text="New" />
               </items>
             </ToolBar>
          </top>
