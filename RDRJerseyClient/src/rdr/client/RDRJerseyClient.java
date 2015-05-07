@@ -22,8 +22,8 @@ public class RDRJerseyClient extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/InventoryMainframe.fxml"));
         
         Scene scene = new Scene(root);
-      
-        stage.setResizable(false);
+        stage.setMaximized(true);
+        //stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -33,7 +33,6 @@ public class RDRJerseyClient extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        
     }
     
 }
