@@ -7,9 +7,10 @@ package mmd.client;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,44 +22,64 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import mmd.client.entity.ReceivedPackagingMaterial;
+import mmd.client.service.ReceivedPackagingMaterialService;
+import mmd.client.utils.DateFormatter;
 
 /**
  *
  * @author maine
  */
-public class ReceivedPackagingMaterialController implements Initializable{
-
+public class ReceivedPackagingMaterialController implements Initializable {
+    
+    //**************************TABLE ****************************************/
     @FXML
-    TableView<ReceivedPackagingMaterial> _tableViewReceivedPackagingMaterial;
-    //**************************TABLE COLUMNS**************************/
+    private TableView<ReceivedPackagingMaterial> _tableViewReceivedPackagingMaterial;
     @FXML
-    TableColumn<ReceivedPackagingMaterial, String> _colCode;
+    private TableColumn<ReceivedPackagingMaterial, String> _colCode;
     @FXML
-    TableColumn<ReceivedPackagingMaterial, String> _colDescription;
+    private TableColumn<ReceivedPackagingMaterial, String> _colDescription;
     @FXML
-    TableColumn<ReceivedPackagingMaterial, Date> _colDateReceived;
+    private TableColumn<ReceivedPackagingMaterial, String> _colDateReceived;
     @FXML
-    TableColumn<ReceivedPackagingMaterial, String> _colRrNo;
+    private TableColumn<ReceivedPackagingMaterial, String> _colRrNo;
     @FXML
-    TableColumn<ReceivedPackagingMaterial, Double> _colQuantity;
+    private TableColumn<ReceivedPackagingMaterial, Double> _colQuantity;
     @FXML
-    TableColumn<ReceivedPackagingMaterial, String> _colUnit;
+    private TableColumn<ReceivedPackagingMaterial, String> _colUnit;
     @FXML
-    TableColumn<ReceivedPackagingMaterial, String> _colQcControlNo;
+    private TableColumn<ReceivedPackagingMaterial, String> _colQcControlNo;
     @FXML
-    TableColumn<ReceivedPackagingMaterial, String> _colReceivedBy;
+    private TableColumn<ReceivedPackagingMaterial, String> _colReceivedBy;
     //***********************************************************************//
+    
+    private final ReceivedPackagingMaterialService receivedPackagingMaterialService = new ReceivedPackagingMaterialService();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("initializing rpm controller");
+        
+        initReceivedPackagingMaterialTableView();
     }
-
+    
+    private void initReceivedPackagingMaterialTableView() {
+        
+        _colCode.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPackagingMaterialId().getCode()));
+        _colDescription.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPackagingMaterialId().getDescription()));
+        _colDateReceived.setCellValueFactory(c -> new SimpleStringProperty(DateFormatter.convertToString(c.getValue().getDateReceived())));
+        _colRrNo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getRrNo()));
+        _colQuantity.setCellValueFactory(c -> new SimpleObjectProperty(c.getValue().getQuantity()));
+        _colUnit.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getUnit()));
+        _colQcControlNo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getQcControlNo()));
+        _colReceivedBy.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getReceivedBy()));
+        
+        ObservableList<ReceivedPackagingMaterial> receivedPackagingMaterialList = receivedPackagingMaterialService
+                .getReceivedPackagingMaterialList();
+        
+        _tableViewReceivedPackagingMaterial.setItems(receivedPackagingMaterialList);
+    }
+    
     @FXML
-    private void handleNewReceiveButton() {
-        Date now = new Date();
-        Timestamp ts = new Timestamp(now.getTime());
-
-        System.out.println(ts);
+    private void handleNewButton() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/_receivePackagingMaterialForm.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -68,15 +89,11 @@ public class ReceivedPackagingMaterialController implements Initializable{
             stage.setTitle("Receive Packaging Material");
             stage.setScene(new Scene(root1));
             stage.show();
-        } catch (IOException e) {   
-            
-            e.printStackTrace();
-            
+
+        } catch (IOException e) {
+            System.out.println("EXCEPTIONS: \n"+e.getMessage());
+
         }
     }
     
-    
-    
-    
-
 }

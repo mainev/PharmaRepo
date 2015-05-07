@@ -3,65 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server._main.entity;
+package mmd.client.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import server.mmd.entity.IssuedPackagingMaterial;
-import server.rdr.entity.TransferredRawMaterial;
 
 /**
  *
  * @author Maine
  */
-@Entity
-@Table(name = "product", schema="public")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")})
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
     private Integer id;
-    @Size(max = 5)
-    @Column(name = "code")
     private String code;
-    @Size(max = 200)
-    @Column(name = "brand_name")
     private String brandName;
-    @Size(max = 200)
-    @Column(name = "generic_name")
     private String genericName;
-    @Size(max = 10)
-    @Column(name = "classification")
     private String classification;
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    @ManyToOne
     private Client clientId;
-     @OneToMany(mappedBy = "productId")
-    private Collection<TransferredRawMaterial> transferredRmCollection;
-     @OneToMany(mappedBy = "productId")
-      private Collection<IssuedPackagingMaterial> mmdIssuedPackagingCollection;
-
     public Product() {
     }
 
@@ -142,23 +101,5 @@ public class Product implements Serializable {
         return "server.entity.Product[ id=" + id + " ]";
     }
     
-      @XmlTransient
-    @JsonIgnore
-    public Collection<TransferredRawMaterial> getTransferredRmCollection() {
-        return transferredRmCollection;
-    }
 
-    public void setTransferredRmCollection(Collection<TransferredRawMaterial> transferredRmCollection) {
-        this.transferredRmCollection = transferredRmCollection;
-    }
-    
-       @XmlTransient
-    @JsonIgnore
-    public Collection<IssuedPackagingMaterial> getMmdIssuedPackagingCollection() {
-        return mmdIssuedPackagingCollection;
-    }
-
-    public void setMmdIssuedPackagingCollection(Collection<IssuedPackagingMaterial> transferredRmCollection) {
-        this.mmdIssuedPackagingCollection = transferredRmCollection;
-    }
 }

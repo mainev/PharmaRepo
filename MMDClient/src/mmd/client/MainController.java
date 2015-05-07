@@ -39,8 +39,7 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("initializing main controller");
         configureMenu();
-        
-      
+
     }
 
     private void configureMenu() {    
@@ -54,8 +53,8 @@ public class MainController implements Initializable {
 
                     if (child.equals("Receive")) {
                         openReceivePackagingMaterial();
-                    } else if (child.equals("Transfer")) {
-                        openReceiveRawMaterial();
+                    } else if (child.equals("Issue")) {
+                        openIssuePackagingMaterial();
                     }
                 });
         
@@ -80,7 +79,7 @@ public class MainController implements Initializable {
     }
 
     private void openIssuePackagingMaterial() {
-
+        ScreenNavigator.loadScreen(ScreenNavigator.ISSUE_PACKAGING_MATERIAL_SCREEN);
     }
 
     private void openReceiveRawMaterial() {

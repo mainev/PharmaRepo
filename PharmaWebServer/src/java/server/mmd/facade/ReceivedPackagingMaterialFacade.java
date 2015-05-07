@@ -21,18 +21,21 @@ public class ReceivedPackagingMaterialFacade {
     @PersistenceContext(unitName = "PharmaWebServerPU")
     private EntityManager em;
 
-    public List<server.mmd.entity.ReceivedPackagingMaterial> findAll() {
-        List<server.mmd.entity.ReceivedPackagingMaterial> list = em.createQuery("select r from server.mmd.entity.ReceivedPackagingMaterial r").getResultList();
+    public List<ReceivedPackagingMaterial> findAll() {
+        List<ReceivedPackagingMaterial> list = em.createQuery("select r from MMD_RECEIVED_PACKAGING_MATERIAL r").getResultList();
         return list;
     }
-    
-    public ReceivedPackagingMaterial create(ReceivedPackagingMaterial rpm){
+
+    public void create(ReceivedPackagingMaterial rpm) {
+        System.out.println(rpm.getPackagingMaterialId().getDescription());
+        
+        
         em.persist(rpm);
-        em.flush();
-        return em.find(ReceivedPackagingMaterial.class, rpm.getId());
+        //em.flush();
+        //return em.find(ReceivedPackagingMaterial.class, rpm.getId());
     }
-    
-    public ReceivedPackagingMaterial findById(int id){
+
+    public ReceivedPackagingMaterial findById(int id) {
         return em.find(ReceivedPackagingMaterial.class, id);
     }
 }

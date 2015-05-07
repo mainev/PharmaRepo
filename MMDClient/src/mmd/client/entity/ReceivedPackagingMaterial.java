@@ -25,8 +25,19 @@ public class ReceivedPackagingMaterial implements Serializable {
     private String qcControlNo;
     private String receivedBy;
     private PackagingMaterial packagingMaterialId;
-    
+
     public ReceivedPackagingMaterial() {
+    }
+    
+    public ReceivedPackagingMaterial(PackagingMaterial packagingMaterial, Date dateReceived, String rrNo,
+            String qcControlNo, Double quantity, String unit,  String receivedBy){
+        this.dateReceived = dateReceived;
+        this.packagingMaterialId = packagingMaterial;
+        this.rrNo = rrNo;
+        this.quantity = quantity;
+        this.unit = unit;
+        this.qcControlNo = qcControlNo;
+        this.receivedBy = receivedBy;
     }
 
     public ReceivedPackagingMaterial(Integer id) {
@@ -104,8 +115,6 @@ public class ReceivedPackagingMaterial implements Serializable {
         this.packagingMaterialId = packagingMaterialId;
     }
 
-   
-    
     @Override
     public boolean equals(Object object) {
         if (!(object instanceof ReceivedPackagingMaterial)) {
@@ -120,7 +129,9 @@ public class ReceivedPackagingMaterial implements Serializable {
 
     @Override
     public String toString() {
-        return " "+id;
+        return " " + id;
     }
+
+
 
 }

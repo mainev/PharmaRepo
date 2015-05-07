@@ -1,5 +1,5 @@
 .root {
-    -fx-font-size: 15.0px;
+    -fx-font-size: 12.0px;
 	-fx-background-color: white;
 	
 	-fx-focus-color: #04B564;
@@ -62,8 +62,9 @@
 #ok:selected, #search:selected, #preview:selected{
    -fx-background-color: #36c766;
 }
-
+/*
 .table-view {
+/*
     -fx-base: #1d1d1d;
     -fx-control-inner-background: #1d1d1d;
     -fx-background-color: #1d1d1d;
@@ -73,20 +74,20 @@
 }
 
 .table-view .column-header-background {
-    -fx-background-color: transparent;
+   /* -fx-background-color: transparent;
 }
 
 .table-view .column-header, .table-view .filler {
-    -fx-size: 35;
-    -fx-border-width: 0 0 1 0;
+    -fx-size: 20;
+    -fx-border-width: 0 0 0 0;
    
-    -fx-border-insets: 0 10 1 0;
+    -fx-border-insets: 0 10 10 0;
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 15px;
+    -fx-font-size: 12px;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
+   /* -fx-text-fill: white;
     -fx-alignment: center-left;
     -fx-opacity: 1;
 }
@@ -94,3 +95,4 @@
 .table-view:focused .table-row-cell:filled:focused:selected {
     -fx-background-color: -fx-focus-color;
 }
+*/

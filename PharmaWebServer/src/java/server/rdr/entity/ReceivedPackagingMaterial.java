@@ -31,11 +31,9 @@ import server._main.entity.PackagingMaterial;
  *
  * @author Maine
  */
-@Entity
+@Entity(name = "RDR_RECEIVED_PACKAGING_MATERIAL")
 @Table(name = "received_packaging_material", schema = "rdr")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ReceivedPackagingMaterial.findAll", query = "SELECT r FROM ReceivedPackagingMaterial r")})
 public class ReceivedPackagingMaterial implements Serializable {
 
     private static final long serialVersionUID = 1L;

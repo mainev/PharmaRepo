@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rdr.client.utils;
+package mmd.client.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class DateFormatter {
 
-    static String pattern = "MM/dd/yyyy";
+    static String pattern = "yyyy-MM-dd'T'HH:mm:ss";
     static SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 
     /**

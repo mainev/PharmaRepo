@@ -17,6 +17,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import server._main.facade.RawMaterialFacade;
 import server.mmd.entity.ReceivedRawMaterial;
 import server.mmd.facade.ReceivedRawMaterialFacade;
 
@@ -25,7 +26,7 @@ import server.mmd.facade.ReceivedRawMaterialFacade;
  *
  * @author maine
  */
-@Path("mmdreceivedrawmaterial")
+@Path("mmd/received/rawmaterial")
 @RequestScoped
 public class ReceivedRawMaterialREST {
 
@@ -52,17 +53,16 @@ public class ReceivedRawMaterialREST {
     public List<ReceivedRawMaterial> getJson() {
         return receivedRmFacade.findAll();
     }
-    
+
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public ReceivedRawMaterial create(ReceivedRawMaterial receivedRm) {
-        return receivedRmFacade.create(receivedRm);
+    //@Produces(MediaType.APPLICATION_JSON)
+    public void create(ReceivedRawMaterial receivedRm) {
+        System.out.println(receivedRm.getDateReceived());
+        receivedRmFacade.create(receivedRm);
     }
 
-   
-    
     @PUT
     @Consumes("application/json")
     public void putJson(String content) {

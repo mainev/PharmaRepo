@@ -30,7 +30,7 @@ import server.rdr.entity.ReceivedPackagingMaterial;
  * @author Maine
  */
 @Entity
-@Table(name = "packaging_material", schema = "public")
+@Table(name = "packaging_material", schema = "main")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PackagingMaterial.findAll", query = "SELECT p FROM PackagingMaterial p")})

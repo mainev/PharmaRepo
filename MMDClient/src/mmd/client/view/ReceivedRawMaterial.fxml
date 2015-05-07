@@ -25,7 +25,9 @@
                         <TableColumn fx:id="_colQuantity" prefWidth="84.0" text="Quantity" />
                         <TableColumn fx:id="_colUnit" prefWidth="65.0" text="Unit" />
                         <TableColumn fx:id="_colQcControlNo" prefWidth="108.0" text="QC Control No" />
-                        <TableColumn fx:id="_colReceivedBy" prefWidth="123.0" text="Received By" />
+                        <TableColumn prefWidth="164.0" text="Manufacturing Date" />
+                        <TableColumn prefWidth="59.0" text="Exp Date" />
+                        <TableColumn fx:id="_colReceivedBy" prefWidth="109.0" text="Received By" />
                     </columns>
                   </TableView>
                </children>

@@ -6,7 +6,10 @@
 package mmd.client.entity;
 
 import java.io.Serializable;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javax.xml.bind.annotation.XmlRootElement;
+import mmd.client.utils.DateFormatter;
 
 /**
  *
@@ -83,7 +86,8 @@ public class PackagingMaterial implements Serializable {
 
     @Override
     public String toString() {
-        return code + " : " +description;
+        return code + " : " + description;
     }
 
+   
 }

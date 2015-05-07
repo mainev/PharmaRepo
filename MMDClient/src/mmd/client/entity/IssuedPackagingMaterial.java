@@ -3,63 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.mmd.entity;
+package mmd.client.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import server._main.entity.Product;
 
 /**
  *
  * @author Maine
  */
-@Entity(name = "mmd.issued_packaging_material")
-@Table(name = "issued_packaging_material", schema = "mmd")
 @XmlRootElement
 public class IssuedPackagingMaterial implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "quantity")
     private Double quantity;
 
-    @Size(max = 5)
-    @Column(name = "unit")
     private String unit;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product productId;
-    
-    @Size(max = 10)
-    @Column(name = "batch_no")
+
     private String batchNo;
-    
-    @Size(max = 50)
-    @Column(name = "issued_by")
+
     private String issuedBy;
-    
-    @ManyToOne
-    @JoinColumn(name = "received_packaging_material_id", referencedColumnName = "id")
+
     private ReceivedPackagingMaterial receivedPackagingMaterialId;
-    
-    @Column(name = "date_issued")
-    @Temporal(TemporalType.DATE)
+
     private Date dateIssued;
 
     public Integer getId() {
@@ -125,8 +96,6 @@ public class IssuedPackagingMaterial implements Serializable {
     public void setDateIssued(Date dateIssued) {
         this.dateIssued = dateIssued;
     }
-    
-    
 
     @Override
     public int hashCode() {

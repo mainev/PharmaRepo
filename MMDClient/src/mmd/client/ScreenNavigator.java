@@ -18,6 +18,7 @@ public class ScreenNavigator {
     public static final String MAIN = "view/Main.fxml";
     public static final String RECEIVE_PACKAGING_MATERIAL_SCREEN = "view/ReceivedPackagingMaterial.fxml";
     public static final String RECEIVE_RAW_MATERIAL_SCREEN = "view/ReceivedRawMaterial.fxml";
+    public static final String ISSUE_PACKAGING_MATERIAL_SCREEN = "view/IssuedPackagingMaterial.fxml";
 
     private static MainController mainController;
 
@@ -33,7 +34,7 @@ public class ScreenNavigator {
                     )
             );
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

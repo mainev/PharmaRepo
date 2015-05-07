@@ -31,7 +31,7 @@ public class MMDClient extends Application {
         */
         
         stage.setTitle("MMD Management System");
-
+        stage.setMaximized(true);
         stage.setScene(
             createScene(
                 loadMainPane()
@@ -54,7 +54,6 @@ public class MMDClient extends Application {
         MainController mainController = loader.getController();
 
         ScreenNavigator.setMainController(mainController);
-       // ScreenNavigator.loadScreen(ScreenNavigator.RECEIVE_PACKAGING_MATERIAL_SCREEN);
 
         return mainPane;
     }

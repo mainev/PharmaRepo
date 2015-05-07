@@ -28,11 +28,9 @@ import server._main.entity.Product;
  *
  * @author Maine
  */
-@Entity
+@Entity(name = "RDR_TRANSFERRED_RAW_MATERIAL")
 @Table(name = "transferred_raw_material", schema="rdr")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "TransferredRawMaterial.findAll", query = "SELECT t FROM TransferredRawMaterial t")})
 public class TransferredRawMaterial implements Serializable {
     private static final long serialVersionUID = 1L;
     @Column(name = "is_transferred")
