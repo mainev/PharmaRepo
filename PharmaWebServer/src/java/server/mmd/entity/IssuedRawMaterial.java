@@ -25,7 +25,7 @@ import server._main.entity.Product;
  *
  * @author maine
  */
-@Entity(name="mmd.issued_raw_material")
+@Entity(name="MMD_ISSUED_RAW_MATERIAL")
 @Table(name = "issued_raw_material", schema="mmd")
 @XmlRootElement
 public class IssuedRawMaterial implements Serializable {

@@ -22,7 +22,7 @@ public class ReceivedRawMaterialFacade {
     private EntityManager em;
 
     public List<ReceivedRawMaterial> findAll() {
-        List<server.mmd.entity.ReceivedRawMaterial> list = em.createQuery("select r from server.mmd.entity.ReceivedRawMaterial r").getResultList();
+        List<server.mmd.entity.ReceivedRawMaterial> list = em.createQuery("select r from MMD_RECEIVED_RAW_MATERIAL r").getResultList();
         return list;
     }
 
@@ -35,4 +35,6 @@ public class ReceivedRawMaterialFacade {
     public ReceivedRawMaterial findById(int id){
         return em.find(ReceivedRawMaterial.class, id);
     }
+    
+   
 }

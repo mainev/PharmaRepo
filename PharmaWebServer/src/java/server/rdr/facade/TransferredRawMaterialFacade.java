@@ -22,9 +22,6 @@ import server.rdr.entity.TransferredRawMaterial;
  */
 @Stateless
 public class TransferredRawMaterialFacade {
-//
-//   @EJB
-//    private ProductFacade productFacade;
 
     @EJB
     private ReceivedRawMaterialFacade receivedRmFacade;
@@ -33,7 +30,7 @@ public class TransferredRawMaterialFacade {
     private EntityManager em;
 
     public List<TransferredRawMaterial> findAll() {
-        return em.createQuery("select t from TransferredRawMaterial t where t.isTransferred = true").getResultList();
+        return em.createQuery("select t from RDR_TRANSFERRED_RAW_MATERIAL t where t.isTransferred = true").getResultList();
     }
 
     public TransferredRawMaterial findById(int id) {
@@ -55,7 +52,7 @@ public class TransferredRawMaterialFacade {
 
     public List<TransferredRawMaterial> updateTransferredRm(List<TransferredRawMaterial> selectedRmToTransfer) {
         for (TransferredRawMaterial trm : selectedRmToTransfer) {
-            Query q = em.createQuery("UPDATE TransferredRawMaterial t SET t.productId = :product, t.dateTransferred = :today, t.tsNo = :tsNo, t.soNo = :soNo, t.isTransferred = :isTransferred WHERE t.id = :id ");
+            Query q = em.createQuery("UPDATE RDR_TRANSFERRED_RAW_MATERIAL t SET t.productId = :product, t.dateTransferred = :today, t.tsNo = :tsNo, t.soNo = :soNo, t.isTransferred = :isTransferred WHERE t.id = :id ");
 
             q.setParameter("product", trm.getProductId());
             q.setParameter("today", trm.getDateTransferred());
@@ -72,7 +69,7 @@ public class TransferredRawMaterialFacade {
 
     public List<TransferredRawMaterial> getTransferableRm(int rmId) {
         Date today = new Date();
-        return em.createQuery("SELECT t from TransferredRawMaterial t where t.receivedRmId.rawMaterialId.id = :rmId AND t.receivedRmId.expDate >= :today AND t.status LIKE :status AND t.isTransferred <> true ORDER by t.receivedRmId.expDate, t.containerNo ASC")
+        return em.createQuery("SELECT t from RDR_TRANSFERRED_RAW_MATERIAL t where t.receivedRmId.rawMaterialId.id = :rmId AND t.receivedRmId.expDate >= :today AND t.status LIKE :status AND t.isTransferred <> true ORDER by t.receivedRmId.expDate, t.containerNo ASC")
                 .setParameter("rmId", rmId)
                 .setParameter("today", today)
                 .setParameter("status", "APPROVED")
@@ -81,13 +78,13 @@ public class TransferredRawMaterialFacade {
     }
 
       public List<TransferredRawMaterial> getQuarantineRm(int rmId){
-        List<TransferredRawMaterial> trmList = em.createQuery("SELECT t FROM TransferredRawMaterial t where t.receivedRmId.rawMaterialId.id = :rmId AND t.isTransferred = 'FALSE' AND t.status='QUARANTINE' ")
+        List<TransferredRawMaterial> trmList = em.createQuery("SELECT t FROM RDR_TRANSFERRED_RAW_MATERIAL t where t.receivedRmId.rawMaterialId.id = :rmId AND t.isTransferred = 'FALSE' AND t.status='QUARANTINE' ")
                 .setParameter("rmId", rmId)
                 .getResultList();
        return trmList;
     }
     public List<TransferredRawMaterial> findByRmCodeAndRrNo(String rmCode, String rrNo) {
-        return em.createQuery("SELECT t from TransferredRawMaterial t where t.receivedRmId.rawMaterialId.code = :rmCode AND t.receivedRmId.rrNo LIKE :rrNo AND t.isTransferred = true ORDER by t.dateTransferred ASC")
+        return em.createQuery("SELECT t from RDR_TRANSFERRED_RAW_MATERIAL t where t.receivedRmId.rawMaterialId.code = :rmCode AND t.receivedRmId.rrNo LIKE :rrNo AND t.isTransferred = true ORDER by t.dateTransferred ASC")
                 .setParameter("rrNo", rrNo)
                 .setParameter("rmCode", rmCode)
                 .getResultList();

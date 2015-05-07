@@ -28,14 +28,14 @@ import server._main.entity.PackagingMaterial;
  *
  * @author Maine
  */
-@Entity(name = "mmd.received_packaging_material")
+@Entity(name = "MMD_RECEIVED_PACKAGING_MATERIAL")
 @Table(name = "received_packaging_material", schema = "mmd")
 @XmlRootElement
 public class ReceivedPackagingMaterial implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

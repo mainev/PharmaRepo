@@ -27,11 +27,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Maine
  */
-@Entity
+@Entity(name = "RDR_TRANSFERRED_PACKAGING_MATERIAL")
 @Table(name = "transferred_packaging_material", schema = "rdr")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "TransferredPackagingMaterial.findAll", query = "SELECT t FROM TransferredPackagingMaterial t")})
 public class TransferredPackagingMaterial implements Serializable {
 
     private static final long serialVersionUID = 1L;

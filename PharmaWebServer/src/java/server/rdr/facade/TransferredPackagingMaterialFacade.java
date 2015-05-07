@@ -26,7 +26,7 @@ public class TransferredPackagingMaterialFacade {
 
     
     public List<TransferredPackagingMaterial> findAll() {
-        return em.createQuery("select r from TransferredPackagingMaterial r").getResultList();
+        return em.createQuery("select r from RDR_TRANSFERRED_PACKAGING_MATERIAL r").getResultList();
     }
     
     public void save(TransferredPackagingMaterial tpm) {
@@ -37,14 +37,14 @@ public class TransferredPackagingMaterialFacade {
     
     public List<TransferredPackagingMaterial> getAvailablePm(int pmId) {
         //temporary method
-       List<TransferredPackagingMaterial> tpmList = em.createQuery("SELECT t FROM TransferredPackagingMaterial t where t.receivedPmId.packagingMaterialId.id = :pmId AND t.isTransferred = 'FALSE' AND t.status='APPROVED' ")
+       List<TransferredPackagingMaterial> tpmList = em.createQuery("SELECT t FROM RDR_TRANSFERRED_PACKAGING_MATERIAL t where t.receivedPmId.packagingMaterialId.id = :pmId AND t.isTransferred = 'FALSE' AND t.status='APPROVED' ")
                 .setParameter("pmId", pmId)
                 .getResultList();
        return tpmList;
     }
     
     public List<TransferredPackagingMaterial> getQuarantinePm(int pmId){
-        List<TransferredPackagingMaterial> tpmList = em.createQuery("SELECT t FROM TransferredPackagingMaterial t where t.receivedPmId.packagingMaterialId.id = :pmId AND t.isTransferred = 'FALSE' AND t.status='QUARANTINE' ")
+        List<TransferredPackagingMaterial> tpmList = em.createQuery("SELECT t FROM RDR_TRANSFERRED_PACKAGING_MATERIAL t where t.receivedPmId.packagingMaterialId.id = :pmId AND t.isTransferred = 'FALSE' AND t.status='QUARANTINE' ")
                 .setParameter("pmId", pmId)
                 .getResultList();
        return tpmList;

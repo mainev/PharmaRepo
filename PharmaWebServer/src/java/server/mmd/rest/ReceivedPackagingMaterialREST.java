@@ -55,9 +55,8 @@ public class ReceivedPackagingMaterialREST {
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public ReceivedPackagingMaterial create(ReceivedPackagingMaterial receivedPm) {
-        return receivedPackagingMaterialFacade.create(receivedPm);
+    public void create(ReceivedPackagingMaterial receivedPm) {
+        receivedPackagingMaterialFacade.create(receivedPm);
     }
 
 }

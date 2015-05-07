@@ -31,7 +31,7 @@ import server.rdr.entity.ReceivedRawMaterial;
  * @author Maine
  */
 @Entity
-@Table(name = "raw_material", schema = "public")
+@Table(name = "raw_material", schema = "main")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "RawMaterial.findAll", query = "SELECT r FROM RawMaterial r")})

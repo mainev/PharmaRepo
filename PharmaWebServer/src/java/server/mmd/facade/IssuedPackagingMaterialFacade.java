@@ -22,7 +22,7 @@ public class IssuedPackagingMaterialFacade {
     private EntityManager em;
 
     public List<IssuedPackagingMaterial> findAll() {
-        List<IssuedPackagingMaterial> list =  em.createQuery("select i from server.mmd.entity.IssuedPackagingMaterial i").getResultList();
+        List<IssuedPackagingMaterial> list =  em.createQuery("select i from MMD_ISSUED_PACKAGING_MATERIAL i").getResultList();
         return list;
     }
     

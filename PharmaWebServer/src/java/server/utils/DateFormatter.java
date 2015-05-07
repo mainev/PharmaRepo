@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class DateFormatter {
 
-    static final String pattern = "MM/dd/yyyy";
+    static final String pattern = "yyyy-MM-dd'T'HH:mm:ss";
     static final SimpleDateFormat sdf = new SimpleDateFormat(pattern);
     static final DateFormat df = sdf;
 

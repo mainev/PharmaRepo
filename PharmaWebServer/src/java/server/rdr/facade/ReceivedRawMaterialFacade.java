@@ -27,7 +27,7 @@ public class ReceivedRawMaterialFacade {
     private EntityManager em;
 
     public List<ReceivedRawMaterial> findAll() {
-        return em.createQuery("select r from ReceivedRawMaterial r").getResultList();
+        return em.createQuery("select r from RDR_RECEIVED_RAW_MATERIAL r").getResultList();
     }
 
     public ReceivedRawMaterial save(ReceivedRawMaterial rrm) {
@@ -51,7 +51,7 @@ public class ReceivedRawMaterialFacade {
     public List<RawMaterialStockCard> getReceivedRmBetweenDate(Date startDate, Date endDate){
         List<RawMaterialStockCard> rmStockCard = new ArrayList();
         
-        List<ReceivedRawMaterial> rrmList = em.createQuery("SELECT r from ReceivedRawMaterial r WHERE r.dateReceived BETWEEN :startDate AND :endDate")
+        List<ReceivedRawMaterial> rrmList = em.createQuery("SELECT r from RDR_RECEIVED_RAW_MATERIAL r WHERE r.dateReceived BETWEEN :startDate AND :endDate")
                 .setParameter("startDate", startDate)
                 .setParameter("endDate", endDate)
                 .getResultList();
@@ -78,8 +78,8 @@ public class ReceivedRawMaterialFacade {
     }
     
     public List<ReceivedRawMaterial> findAllQuarantine() {
-        Query query = em.createNativeQuery("SELECT distinct(received_rm_id) FROM transferred_raw_material\n" +
-                                           "where transferred_raw_material.status = 'QUARANTINE';");
+        Query query = em.createNativeQuery("SELECT distinct(received_rm_id) FROM rdr.transferred_raw_material\n" +
+                                           "where rdr.transferred_raw_material.status = 'QUARANTINE';");
         List<Integer> ids= (List<Integer>) query.getResultList();
         
         List<ReceivedRawMaterial> rrmList = new ArrayList();

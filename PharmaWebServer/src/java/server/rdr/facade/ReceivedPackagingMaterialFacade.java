@@ -26,7 +26,7 @@ public class ReceivedPackagingMaterialFacade {
     private EntityManager em;
 
     public List<ReceivedPackagingMaterial> findAll() {
-        return em.createQuery("select r from ReceivedPackagingMaterial r").getResultList();
+        return em.createQuery("select r from RDR_RECEIVED_PACKAGING_MATERIAL r").getResultList();
     }
 
     public ReceivedPackagingMaterial findById(int id) {
@@ -51,7 +51,7 @@ public class ReceivedPackagingMaterialFacade {
     public List<PackagingMaterialStockCard> getReceivedPmBetweenDate(Date startDate, Date endDate) {
         List<PackagingMaterialStockCard> receivedPmListResult = new ArrayList();
 
-        List<ReceivedPackagingMaterial> rpmList = em.createQuery("SELECT r from ReceivedPackagingMaterial r WHERE r.dateReceived BETWEEN :startDate AND :endDate")
+        List<ReceivedPackagingMaterial> rpmList = em.createQuery("SELECT r from RDR_RECEIVED_PACKAGING_MATERIAL r WHERE r.dateReceived BETWEEN :startDate AND :endDate")
                 .setParameter("startDate", startDate)
                 .setParameter("endDate", endDate)
                 .getResultList();
@@ -74,8 +74,8 @@ public class ReceivedPackagingMaterialFacade {
     }
 
     public List<ReceivedPackagingMaterial> findAllQuarantine() {
-        Query query = em.createNativeQuery("SELECT distinct(received_pm_id) FROM transferred_packaging_material\n"
-                + "where transferred_packaging_material.status = 'QUARANTINE';");
+        Query query = em.createNativeQuery("SELECT distinct(received_pm_id) FROM rdr.transferred_packaging_material\n"
+                + "where rdr.transferred_packaging_material.status = 'QUARANTINE';");
         List<Integer> ids = (List<Integer>) query.getResultList();
 
         List<ReceivedPackagingMaterial> rpmList = new ArrayList();
