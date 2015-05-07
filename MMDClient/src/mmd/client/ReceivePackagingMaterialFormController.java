@@ -54,6 +54,4 @@ public class ReceivePackagingMaterialFormController implements Initializable {
         stage.close();
     }
     
-    
-
 }
