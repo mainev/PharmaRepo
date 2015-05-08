@@ -25,6 +25,7 @@ public class PackagingMaterialService {
     private Client client;
     private WebResource webResource;
     private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/packagingmaterial";
+    PackagingMaterialSerializer pms = new PackagingMaterialSerializer();
 
     public PackagingMaterialService() {
         initClient();
@@ -37,14 +38,12 @@ public class PackagingMaterialService {
     }
 
     public ObservableList<PackagingMaterial> getPackagingMaterialList() {
-        ObservableList<PackagingMaterial> allPackagingMaterials = FXCollections.observableArrayList();
 
         webResource = client.resource(BASE_URI);
         ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
         String jsonOutput = response.getEntity(String.class);
 
-        PackagingMaterialSerializer pms = new PackagingMaterialSerializer();
-        allPackagingMaterials = pms.deserializeList(jsonOutput);
-        return allPackagingMaterials;
+        return pms.deserializeList(jsonOutput);
+
     }
 }

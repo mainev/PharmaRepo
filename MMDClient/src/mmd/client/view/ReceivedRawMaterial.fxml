@@ -9,25 +9,27 @@
       <BorderPane layoutX="40.0" layoutY="38.0" prefHeight="600.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <items>
-                  <Button mnemonicParsing="false" onAction="#handleNewReceiveButton" prefHeight="25.0" prefWidth="63.0" text="New" />
-               </items></ToolBar>
+              <items>
+                <Button mnemonicParsing="false" onAction="#handleNewButton" prefHeight="25.0" prefWidth="100.0" text="New" />
+              </items>
+            </ToolBar>
          </top>
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
                <children>
-                  <TableView layoutX="78.0" layoutY="71.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <TableView fx:id="_tableViewReceivedRawMaterial" layoutX="78.0" layoutY="71.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <columns>
-                      <TableColumn fx:id="_colCode" prefWidth="93.0" text="Code" />
-                      <TableColumn fx:id="_colDescription" prefWidth="444.0" text="Name" />
-                        <TableColumn fx:id="_colDateReceived" prefWidth="119.0" text="Date Received" />
-                        <TableColumn fx:id="_colRrNo" prefWidth="83.0" text="RR No" />
-                        <TableColumn fx:id="_colQuantity" prefWidth="84.0" text="Quantity" />
-                        <TableColumn fx:id="_colUnit" prefWidth="65.0" text="Unit" />
-                        <TableColumn fx:id="_colQcControlNo" prefWidth="108.0" text="QC Control No" />
-                        <TableColumn prefWidth="164.0" text="Manufacturing Date" />
-                        <TableColumn prefWidth="59.0" text="Exp Date" />
-                        <TableColumn fx:id="_colReceivedBy" prefWidth="109.0" text="Received By" />
+                      <TableColumn fx:id="_colCode" prefWidth="100.0" text="Code" />
+                      <TableColumn fx:id="_colName" prefWidth="350.0" text="Name" />
+                        <TableColumn fx:id="_colDateReceived" prefWidth="120.0" text="Date Received" />
+                        <TableColumn fx:id="_colRrNo" prefWidth="100.0" text="RR No" />
+                        <TableColumn fx:id="_colQuantity" prefWidth="100.0" text="Quantity" />
+                        <TableColumn fx:id="_colUnit" prefWidth="100.0" text="Unit" />
+                        <TableColumn fx:id="_colBatchNo" prefWidth="100.0" text="Batch No" />
+                        <TableColumn fx:id="_colQcControlNo" prefWidth="100.0" text="QC Control No" />
+                        <TableColumn fx:id="_colManufacturingDate" prefWidth="120.0" text="Mfg Date" />
+                        <TableColumn fx:id="_colExpirationDate" prefWidth="120.0" text="Exp Date" />
+                        <TableColumn fx:id="_colReceivedBy" prefWidth="100.0" text="Received By" />
                     </columns>
                   </TableView>
                </children>

@@ -6,12 +6,12 @@
 package mmd.client.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
-
+/**
+ *
+ * @author Maine
+ */
 @XmlRootElement
 public class RawMaterial implements Serializable {
 
@@ -22,9 +22,6 @@ public class RawMaterial implements Serializable {
     private String description;
     private String classification;
     private Client clientId;
-    private Collection<ReceivedRawMaterial> receivedRmCollection;
-
-//    private Collection<server.mmd.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection;
 
     public RawMaterial() {
     }
@@ -105,27 +102,8 @@ public class RawMaterial implements Serializable {
 
     @Override
     public String toString() {
-        return "server.entity.RawMaterial[ id=" + id + " ]";
+        return code +" : "+name;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ReceivedRawMaterial> getReceivedRmCollection() {
-        return receivedRmCollection;
-    }
-
-    public void setReceivedRmCollection(Collection<ReceivedRawMaterial> receivedRmCollection) {
-        this.receivedRmCollection = receivedRmCollection;
-    }
-
-    
-//    @XmlTransient
-//    @JsonIgnore
-//    public Collection<ReceivedRawMaterial> getMmdReceivedRawMaterialCollection() {
-//        return mmdReceivedRawMaterialCollection;
-//    }
-
-//    public void setMmdReceivedRawMaterialCollection(Collection<server.mmd.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection) {
-//        this.mmdReceivedRawMaterialCollection = mmdReceivedRawMaterialCollection;
-//    }
+   
 }

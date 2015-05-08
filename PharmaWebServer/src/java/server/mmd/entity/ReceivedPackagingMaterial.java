@@ -36,29 +36,32 @@ public class ReceivedPackagingMaterial implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Basic(optional = false)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "date_received")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateReceived;
+    
     @Size(max = 10)
     @Column(name = "rr_no")
     private String rrNo;
+    
     @Column(name = "quantity")
     private Double quantity;
+    
     @Size(max = 5)
     @Column(name = "unit")
     private String unit;
+    
     @Size(max = 15)
     @Column(name = "qc_control_no")
     private String qcControlNo;
+    
     @Size(max = 50)
     @Column(name = "received_by")
     private String receivedBy;
-
-//    @Column(name = "packaging_material_id")
-//    private Integer packagingMaterialId;
     
     @ManyToOne
     @JoinColumn(name = "packaging_material_id", referencedColumnName = "id")

@@ -20,7 +20,7 @@ import server.rdr.entity.TransferredRawMaterial;
  *
  * @author Maine
  */
-@Stateless
+@Stateless(name = "RDR_TRANSFERRED_RAW_MATERIAL_FACADE")
 public class TransferredRawMaterialFacade {
 
     @EJB

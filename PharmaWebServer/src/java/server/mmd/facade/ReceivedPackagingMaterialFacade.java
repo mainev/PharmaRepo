@@ -15,24 +15,19 @@ import server.mmd.entity.ReceivedPackagingMaterial;
  *
  * @author Maine
  */
-@Stateless
+@Stateless(name = "MMD_RECEIVED_PACKAGING_MATERIAL_FACADE")
 public class ReceivedPackagingMaterialFacade {
 
     @PersistenceContext(unitName = "PharmaWebServerPU")
     private EntityManager em;
 
     public List<ReceivedPackagingMaterial> findAll() {
-        List<ReceivedPackagingMaterial> list = em.createQuery("select r from MMD_RECEIVED_PACKAGING_MATERIAL r").getResultList();
+        List<ReceivedPackagingMaterial> list = em.createQuery("select r from MMD_RECEIVED_PACKAGING_MATERIAL r order by r.dateReceived desc").getResultList();
         return list;
     }
 
     public void create(ReceivedPackagingMaterial rpm) {
-        System.out.println(rpm.getPackagingMaterialId().getDescription());
-        
-        
         em.persist(rpm);
-        //em.flush();
-        //return em.find(ReceivedPackagingMaterial.class, rpm.getId());
     }
 
     public ReceivedPackagingMaterial findById(int id) {

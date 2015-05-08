@@ -13,24 +13,24 @@ import java.util.Collection;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import mmd.client.entity.PackagingMaterial;
 import mmd.client.entity.RawMaterial;
+
 /**
  *
- * @author jemuel
+ * @author Admin
  */
 public class RawMaterialSerializer {
-    
-    String pattern = "yyyy-MM-dd'T'HH:mm:ss";
-    
+
+    private final String pattern = "yyyy-MM-dd'T'HH:mm:ss";
+
     public RawMaterialSerializer() {
-        
     }
 
     /**
      * Returns an ObservableList of raw materials from json string
+     *
      * @param jsonOutput
-     * @return 
+     * @return
      */
     public ObservableList<RawMaterial> deserializeList(String jsonOutput) {
         ObservableList<RawMaterial> observableRMList = FXCollections.observableArrayList();
@@ -38,17 +38,17 @@ public class RawMaterialSerializer {
         Type datasetListType = new TypeToken<Collection<RawMaterial>>() {
         }.getType();
         List<RawMaterial> datasets = gson.fromJson(jsonOutput, datasetListType);
-        
-        datasets.forEach(rm->observableRMList.add(rm));
+
+        datasets.forEach(rm -> observableRMList.add(rm));
 
         return observableRMList;
     }
-    
-     public String serialize(PackagingMaterial pm){
-    
-        Gson gson = new GsonBuilder().setDateFormat(pattern).create();
-        String json = gson.toJson(pm);
 
-       return json;
+    public String serialize(RawMaterial rm) {
+
+        Gson gson = new GsonBuilder().setDateFormat(pattern).create();
+        String json = gson.toJson(rm);
+
+        return json;
     }
 }

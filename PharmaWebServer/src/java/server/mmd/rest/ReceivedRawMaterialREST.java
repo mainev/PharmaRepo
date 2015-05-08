@@ -17,7 +17,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
-import server._main.facade.RawMaterialFacade;
 import server.mmd.entity.ReceivedRawMaterial;
 import server.mmd.facade.ReceivedRawMaterialFacade;
 
@@ -34,8 +33,9 @@ public class ReceivedRawMaterialREST {
     private UriInfo context;
 
     @Inject
-    private ReceivedRawMaterialFacade receivedRmFacade;
+    private ReceivedRawMaterialFacade receivedRawMaterialFacade;
 
+    
     /**
      * Creates a new instance of ReceivedRawMaterialREST
      */
@@ -51,16 +51,14 @@ public class ReceivedRawMaterialREST {
     @GET
     @Produces("application/json")
     public List<ReceivedRawMaterial> getJson() {
-        return receivedRmFacade.findAll();
+        return receivedRawMaterialFacade.findAll();
     }
 
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
-    //@Produces(MediaType.APPLICATION_JSON)
     public void create(ReceivedRawMaterial receivedRm) {
-        System.out.println(receivedRm.getDateReceived());
-        receivedRmFacade.create(receivedRm);
+        receivedRawMaterialFacade.create(receivedRm);
     }
 
     @PUT

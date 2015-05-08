@@ -6,13 +6,13 @@
 package mmd.client.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
-
-
+/**
+ *
+ * @author maine
+ */
 @XmlRootElement
 public class ReceivedRawMaterial implements Serializable {
 
@@ -27,12 +27,23 @@ public class ReceivedRawMaterial implements Serializable {
     private Date expDate;
     private String rrNo;
     private String receivedBy;
-
     private RawMaterial rawMaterialId;
 
-//    private Collection<IssuedRawMaterial> mmdIssuedRawMaterialCollection;
-
     public ReceivedRawMaterial() {
+    }
+
+    public ReceivedRawMaterial(RawMaterial rawMaterial, Date dateReceived, double quantity, String unit,
+            String batchNo, String qcControlNo, Date mfgDate, Date expDate, String rrNo, String receivedBy) {
+        this.rawMaterialId = rawMaterial;
+        this.dateReceived = dateReceived;
+        this.quantity = quantity;
+        this.unit = unit;
+        this.batchNo = batchNo;
+        this.qcControlNo = qcControlNo;
+        this.manufacturingDate = mfgDate;
+        this.expDate = expDate;
+        this.rrNo = rrNo;
+        this.receivedBy = receivedBy;
     }
 
     public ReceivedRawMaterial(Integer id) {
@@ -152,15 +163,4 @@ public class ReceivedRawMaterial implements Serializable {
         return "server.mmd.entity.ReceivedRawMaterial[ id=" + id + " ]";
     }
 
-//     @XmlTransient
-//    public Collection<IssuedRawMaterial> getMmdIssuedRawMaterialCollection() {
-//        return mmdIssuedRawMaterialCollection;
-//    }
-//
-//    public void setMmdIssuedRawMaterialCollection(Collection<IssuedRawMaterial> mmdIssuedRawMaterialCollection) {
-//        this.mmdIssuedRawMaterialCollection = mmdIssuedRawMaterialCollection;
-//    }
-
-    
-   
 }

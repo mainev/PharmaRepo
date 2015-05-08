@@ -89,10 +89,8 @@ public class ReceivedPackagingMaterialController implements Initializable {
             stage.setTitle("Receive Packaging Material");
             stage.setScene(new Scene(root1));
             stage.show();
-
         } catch (IOException e) {
             System.out.println("EXCEPTIONS: \n"+e.getMessage());
-
         }
     }
     

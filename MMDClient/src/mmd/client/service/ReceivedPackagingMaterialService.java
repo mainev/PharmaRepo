@@ -53,7 +53,7 @@ public class ReceivedPackagingMaterialService {
         ReceivedPackagingMaterial receivedPackagingMaterial = new ReceivedPackagingMaterial(packagingMaterial, dateReceived,
                 rrNo, qcControlNo, quantity, unit, receivedBy);
         String input = receivedPackagingMaterialSerializer.serializeReceivedPackagingMaterial(receivedPackagingMaterial);
-        System.out.println("json input " + input);
+       // System.out.println("json input " + input);
         webResource = client.resource(BASE_URI + "/create");
         webResource.type("application/json")
                 .post(ClientResponse.class, input);

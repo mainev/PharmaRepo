@@ -15,26 +15,23 @@ import server.mmd.entity.ReceivedRawMaterial;
  *
  * @author maine
  */
-@Stateless
+@Stateless(name="MMD_RECEIVED_RAW_MATERIAL_FACADE")
 public class ReceivedRawMaterialFacade {
 
     @PersistenceContext(unitName = "PharmaWebServerPU")
     private EntityManager em;
 
     public List<ReceivedRawMaterial> findAll() {
-        List<server.mmd.entity.ReceivedRawMaterial> list = em.createQuery("select r from MMD_RECEIVED_RAW_MATERIAL r").getResultList();
+        List<ReceivedRawMaterial> list = em.createQuery("select r from MMD_RECEIVED_RAW_MATERIAL r order by r.dateReceived desc").getResultList();
         return list;
     }
 
-    public ReceivedRawMaterial create(ReceivedRawMaterial rrm) {
+    public void create(ReceivedRawMaterial rrm) {
         em.persist(rrm);
-        em.flush();
-        return em.find(ReceivedRawMaterial.class, rrm.getId());
     }
-    
-    public ReceivedRawMaterial findById(int id){
+
+    public ReceivedRawMaterial findById(int id) {
         return em.find(ReceivedRawMaterial.class, id);
     }
-    
-   
+
 }
