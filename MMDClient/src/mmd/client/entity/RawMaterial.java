@@ -13,19 +13,20 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Maine
  */
 @XmlRootElement
-public class PackagingMaterial implements Serializable {
+public class RawMaterial implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     private Integer id;
     private String code;
+    private String name;
     private String description;
+    private String classification;
     private Client clientId;
 
-    public PackagingMaterial() {
+    public RawMaterial() {
     }
 
-    public PackagingMaterial(Integer id) {
+    public RawMaterial(Integer id) {
         this.id = id;
     }
 
@@ -45,12 +46,28 @@ public class PackagingMaterial implements Serializable {
         this.code = code;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
     }
 
     public Client getClientId() {
@@ -60,6 +77,8 @@ public class PackagingMaterial implements Serializable {
     public void setClientId(Client clientId) {
         this.clientId = clientId;
     }
+
+    
 
     @Override
     public int hashCode() {
@@ -71,10 +90,10 @@ public class PackagingMaterial implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PackagingMaterial)) {
+        if (!(object instanceof RawMaterial)) {
             return false;
         }
-        PackagingMaterial other = (PackagingMaterial) object;
+        RawMaterial other = (RawMaterial) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -83,7 +102,7 @@ public class PackagingMaterial implements Serializable {
 
     @Override
     public String toString() {
-        return code + " : " + description;
+        return code +" : "+name;
     }
 
    

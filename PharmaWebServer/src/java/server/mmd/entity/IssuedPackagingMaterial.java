@@ -59,7 +59,7 @@ public class IssuedPackagingMaterial implements Serializable {
     private ReceivedPackagingMaterial receivedPackagingMaterialId;
     
     @Column(name = "date_issued")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateIssued;
 
     public Integer getId() {

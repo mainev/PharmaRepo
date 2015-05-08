@@ -22,46 +22,63 @@ import mmd.client.service.PackagingMaterialService;
 public class MainController implements Initializable {
 
     @FXML
-    AnchorPane _anchorPaneReceive;
-
-    @FXML
-    AnchorPane _anchorPanePackagingMaterialMenu;
-    @FXML
-    AnchorPane _anchorPaneRawMaterialMenu;
+    AnchorPane _anchorPaneMenu;
 
     @FXML
     StackPane _stackPane;
 
-    MyTreeView treeViewMainMenu = new MyTreeView();
+    MyTreeView treeViewMenu = new MyTreeView();
     PackagingMaterialService pmService = new PackagingMaterialService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("initializing main controller");
-        configureMenu();
+        initMenu();
     }
 
-    private void configureMenu() {
-        _anchorPanePackagingMaterialMenu.getChildren().add(treeViewMainMenu);
-        treeViewMainMenu.getSelectionModel().selectedItemProperty().addListener(
+    private void initMenu() {
+        treeViewMenu.setPrefWidth(220);
+        _anchorPaneMenu.getChildren().add(treeViewMenu);
+        treeViewMenu.getSelectionModel().selectedItemProperty().addListener(
                 (ob, ov, nv) -> {
                     String parent = nv.parentProperty().get().getValue();
                     String child = nv.getValue();
 
-                    if (child.equals("Receive")) {
-                        openReceivePackagingMaterial();
-                    } else if (child.equals("Issue")) {
-                        openIssuePackagingMaterial();
+                    switch (parent) {
+                        case "Raw Material":
+                            if (child.equals("Receive")) {
+                                openReceiveRawMaterial();
+                            } else {
+                                openIssueRawMaterial();
+                            }
+                            break;
+
+                        case "Packaging Material":
+                            if (child.equals("Receive")) {
+                                openReceivePackagingMaterial();
+                            } else {
+                                openIssuePackagingMaterial();
+                            }
+                            break;
+
+                        default:
+                            break;
+
                     }
                 });
-    }
 
-    private void openReceivePackagingMaterial() {
-        ScreenNavigator.loadScreen(ScreenNavigator.RECEIVE_PACKAGING_MATERIAL_SCREEN);
     }
 
     private void openIssuePackagingMaterial() {
         ScreenNavigator.loadScreen(ScreenNavigator.ISSUE_PACKAGING_MATERIAL_SCREEN);
+    }
+
+    private void openIssueRawMaterial() {
+
+    }
+
+    private void openReceivePackagingMaterial() {
+        ScreenNavigator.loadScreen(ScreenNavigator.RECEIVE_PACKAGING_MATERIAL_SCREEN);
     }
 
     private void openReceiveRawMaterial() {

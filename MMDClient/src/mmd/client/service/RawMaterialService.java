@@ -5,29 +5,28 @@
  */
 package mmd.client.service;
 
-import mmd.client.utils.PackagingMaterialSerializer;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import mmd.client.entity.RawMaterial;
+import mmd.client.utils.RawMaterialSerializer;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
-import mmd.client.entity.PackagingMaterial;
 
 /**
  *
- * @author jemuel
+ * @author maine
  */
-public class PackagingMaterialService {
+public class RawMaterialService {
 
     private DefaultClientConfig defaultClientConfig;
     private Client client;
     private WebResource webResource;
-    private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/packagingmaterial";
-    PackagingMaterialSerializer pms = new PackagingMaterialSerializer();
+    private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/rawmaterial";
+    RawMaterialSerializer rawMaterialSerializer = new RawMaterialSerializer();
 
-    public PackagingMaterialService() {
+    public RawMaterialService() {
         initClient();
     }
 
@@ -37,13 +36,14 @@ public class PackagingMaterialService {
         client = Client.create(defaultClientConfig);
     }
 
-    public ObservableList<PackagingMaterial> getPackagingMaterialList() {
+    public ObservableList<RawMaterial> getRawMaterialList() {
 
         webResource = client.resource(BASE_URI);
         ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
         String jsonOutput = response.getEntity(String.class);
 
-        return pms.deserializeList(jsonOutput);
+        return rawMaterialSerializer.deserializeList(jsonOutput);
 
     }
+
 }

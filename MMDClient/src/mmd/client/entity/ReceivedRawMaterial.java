@@ -3,85 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.mmd.entity;
+package mmd.client.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import server._main.entity.RawMaterial;
 
 /**
  *
  * @author maine
  */
-@Entity(name = "MMD_RECEIVED_RAW_MATERIAL")
-@Table(name = "received_raw_material", schema = "mmd")
 @XmlRootElement
 public class ReceivedRawMaterial implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
-
-    @Column(name = "date_received")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date dateReceived;
-
-    @Column(name = "quantity")
     private Double quantity;
-
-    @Column(name = "unit")
-    @Size(max = 5)
     private String unit;
-
-    @Column(name = "batch_no")
-    @Size(max = 10)
     private String batchNo;
-
-    @Column(name = "qc_control_no")
-    @Size(max = 15)
     private String qcControlNo;
-
-    @Column(name = "manufacturing_date")
-    @Temporal(TemporalType.DATE)
     private Date manufacturingDate;
-
-    @Column(name = "exp_date")
-    @Temporal(TemporalType.DATE)
     private Date expDate;
-
-    @Column(name = "rr_no")
-    @Size(max = 10)
     private String rrNo;
-
-    @Column(name = "received_by")
-    @Size(max = 50)
     private String receivedBy;
-
-    @ManyToOne
-    @JoinColumn(name = "raw_material_id", referencedColumnName = "id")
     private RawMaterial rawMaterialId;
-
-    @OneToMany(mappedBy = "receivedRawMaterialId")
-    private Collection<IssuedRawMaterial> mmdIssuedRawMaterialCollection;
-
     public ReceivedRawMaterial() {
+    }
+    
+    public ReceivedRawMaterial(RawMaterial rawMaterial, Date dateReceived, double quantity, String unit,
+            String batchNo, String qcControlNo, Date mfgDate, Date expDate, String rrNo, String receivedBy){
+        this.rawMaterialId = rawMaterial;
+        this.dateReceived = dateReceived;
+        this.quantity = quantity;
+        this.unit = unit;
+        this.batchNo = batchNo;
+        this.qcControlNo = qcControlNo;
+        this.manufacturingDate = mfgDate;
+        this.expDate = expDate;
+        this.rrNo = rrNo;
+        this.receivedBy = receivedBy;
     }
 
     public ReceivedRawMaterial(Integer id) {
@@ -201,15 +162,10 @@ public class ReceivedRawMaterial implements Serializable {
         return "server.mmd.entity.ReceivedRawMaterial[ id=" + id + " ]";
     }
 
-     @XmlTransient
-    public Collection<IssuedRawMaterial> getMmdIssuedRawMaterialCollection() {
-        return mmdIssuedRawMaterialCollection;
-    }
+    
 
-    public void setMmdIssuedRawMaterialCollection(Collection<IssuedRawMaterial> mmdIssuedRawMaterialCollection) {
-        this.mmdIssuedRawMaterialCollection = mmdIssuedRawMaterialCollection;
-    }
-
+    
+   
     
    
 }

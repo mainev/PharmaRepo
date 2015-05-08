@@ -6,6 +6,7 @@
 package server.mmd.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +15,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import server._main.entity.Product;
@@ -62,6 +63,10 @@ public class IssuedRawMaterial implements Serializable {
     @ManyToOne
     @JoinColumn(name = "received_raw_material_id", referencedColumnName = "id")
     private ReceivedRawMaterial receivedRawMaterialId;
+    
+    @Column(name = "date_issued")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateIssued;
 
     public IssuedRawMaterial() {
     }
@@ -166,5 +171,15 @@ public class IssuedRawMaterial implements Serializable {
     public void setReceivedRawMaterialId(ReceivedRawMaterial receivedRawMaterialId) {
         this.receivedRawMaterialId = receivedRawMaterialId;
     }
+
+    public Date getDateIssued() {
+        return dateIssued;
+    }
+
+    public void setDateIssued(Date dateIssued) {
+        this.dateIssued = dateIssued;
+    }
+    
+    
 
 }
