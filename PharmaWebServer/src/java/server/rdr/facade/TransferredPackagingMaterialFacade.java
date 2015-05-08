@@ -18,7 +18,7 @@ import server.rdr.entity.TransferredPackagingMaterial;
  *
  * @author Maine
  */
-@Stateless
+@Stateless(name = "RDR_TRANSFERRED_PACKAGING_MATERIAL_FACADE")
 public class TransferredPackagingMaterialFacade {
 
    @PersistenceContext(unitName = "PharmaWebServerPU")

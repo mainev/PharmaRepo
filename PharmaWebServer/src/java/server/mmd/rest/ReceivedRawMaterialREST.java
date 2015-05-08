@@ -33,8 +33,9 @@ public class ReceivedRawMaterialREST {
     private UriInfo context;
 
     @Inject
-    private ReceivedRawMaterialFacade receivedRmFacade;
+    private ReceivedRawMaterialFacade receivedRawMaterialFacade;
 
+    
     /**
      * Creates a new instance of ReceivedRawMaterialREST
      */
@@ -50,14 +51,14 @@ public class ReceivedRawMaterialREST {
     @GET
     @Produces("application/json")
     public List<ReceivedRawMaterial> getJson() {
-        return receivedRmFacade.findAll();
+        return receivedRawMaterialFacade.findAll();
     }
 
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(ReceivedRawMaterial receivedRm) {
-        receivedRmFacade.create(receivedRm);
+        receivedRawMaterialFacade.create(receivedRm);
     }
 
     @PUT

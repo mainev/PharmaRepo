@@ -15,7 +15,7 @@ import server.mmd.entity.IssuedRawMaterial;
  *
  * @author maine
  */
-@Stateless
+@Stateless(name = "MMD_ISSUED_RAW_MATERIAL_FACADE")
 public class IssuedRawMaterialFacade {
 
    @PersistenceContext(unitName = "PharmaWebServerPU")

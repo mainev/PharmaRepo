@@ -7,7 +7,6 @@ package server.mmd.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +33,7 @@ public class IssuedRawMaterial implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+   // @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation

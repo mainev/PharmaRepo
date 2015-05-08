@@ -15,7 +15,7 @@ import server.mmd.entity.ReceivedPackagingMaterial;
  *
  * @author Maine
  */
-@Stateless
+@Stateless(name = "MMD_RECEIVED_PACKAGING_MATERIAL_FACADE")
 public class ReceivedPackagingMaterialFacade {
 
     @PersistenceContext(unitName = "PharmaWebServerPU")

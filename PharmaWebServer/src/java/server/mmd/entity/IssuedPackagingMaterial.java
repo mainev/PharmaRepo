@@ -7,6 +7,7 @@ package server.mmd.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,7 @@ public class IssuedPackagingMaterial implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Basic(optional = false)
     private Integer id;
 
     @Column(name = "quantity")

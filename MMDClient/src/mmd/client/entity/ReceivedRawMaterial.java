@@ -28,11 +28,12 @@ public class ReceivedRawMaterial implements Serializable {
     private String rrNo;
     private String receivedBy;
     private RawMaterial rawMaterialId;
+
     public ReceivedRawMaterial() {
     }
-    
+
     public ReceivedRawMaterial(RawMaterial rawMaterial, Date dateReceived, double quantity, String unit,
-            String batchNo, String qcControlNo, Date mfgDate, Date expDate, String rrNo, String receivedBy){
+            String batchNo, String qcControlNo, Date mfgDate, Date expDate, String rrNo, String receivedBy) {
         this.rawMaterialId = rawMaterial;
         this.dateReceived = dateReceived;
         this.quantity = quantity;
@@ -162,10 +163,4 @@ public class ReceivedRawMaterial implements Serializable {
         return "server.mmd.entity.ReceivedRawMaterial[ id=" + id + " ]";
     }
 
-    
-
-    
-   
-    
-   
 }

@@ -20,7 +20,7 @@ import server.rdr.entity.TransferredRawMaterial;
  *
  * @author Maine
  */
-@Stateless
+@Stateless(name = "RDR_RECEIVED_RAW_MATERIAL_FACADE")
 public class ReceivedRawMaterialFacade {
 
     @PersistenceContext(unitName = "PharmaWebServerPU")
