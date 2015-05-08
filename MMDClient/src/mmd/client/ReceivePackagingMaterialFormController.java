@@ -67,6 +67,7 @@ public class ReceivePackagingMaterialFormController implements Initializable {
         stage.close();
     }
 
+
     @FXML
     private void handleAddButton() {
         PackagingMaterial selectedPackagingMaterial = (PackagingMaterial) packagingMaterialTextField.getSelectedItem();
@@ -110,5 +111,6 @@ public class ReceivePackagingMaterialFormController implements Initializable {
         _textFieldQuantity.setText("");
         _textFieldReceivedBy.setText("");
     }
+
 
 }
