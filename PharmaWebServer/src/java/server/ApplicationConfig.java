@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(server._main.rest.AreaREST.class);
         resources.add(server._main.rest.ClientREST.class);
+        resources.add(server._main.rest.EquipmentREST.class);
         resources.add(server._main.rest.PackagingMaterialREST.class);
         resources.add(server._main.rest.ProductREST.class);
         resources.add(server._main.rest.RawMaterialREST.class);
