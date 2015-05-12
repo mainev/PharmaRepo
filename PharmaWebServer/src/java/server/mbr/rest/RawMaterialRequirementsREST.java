@@ -15,42 +15,42 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
-import server.mbr.entity.UDF;
-import server.mbr.facade.UDFFacade;
+import server.mbr.entity.RawMaterialRequirements;
+import server.mbr.facade.RawMaterialRequirementsFacade;
 
 /**
  * REST Web Service
  *
  * @author maine
  */
-@Path("mbr/udf")
+@Path("mbr/rawmaterialrequirements")
 @RequestScoped
-public class UDFRest {
+public class RawMaterialRequirementsREST {
 
     @Context
     private UriInfo context;
     
     @Inject
-    private UDFFacade udfFacade;
+    private RawMaterialRequirementsFacade rawMaterialRequirementsFacade;
 
     /**
-     * Creates a new instance of UDFRest
+     * Creates a new instance of RawMaterialRequirementsREST
      */
-    public UDFRest() {
+    public RawMaterialRequirementsREST() {
     }
 
     /**
-     * Retrieves representation of an instance of server.mbr.rest.UDFRest
+     * Retrieves representation of an instance of server.mbr.rest.RawMaterialRequirementsREST
      * @return an instance of java.lang.String
      */
     @GET
     @Produces("application/json")
-    public List<UDF> getJson() {
-        return udfFacade.findAll();
+    public List<RawMaterialRequirements> getJson() {
+       return rawMaterialRequirementsFacade.findAll();
     }
 
     /**
-     * PUT method for updating or creating an instance of UDFRest
+     * PUT method for updating or creating an instance of RawMaterialRequirementsREST
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
