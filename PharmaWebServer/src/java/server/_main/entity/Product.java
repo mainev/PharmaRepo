@@ -23,6 +23,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import server.mbr.entity.MBR;
 import server.mmd_tolling.entity.IssuedPackagingMaterial;
 import server.rdr.entity.TransferredRawMaterial;
 
@@ -60,7 +61,7 @@ public class Product implements Serializable {
     private String vrNo;
     @Column(name = "shelf_life")
     private Short shelfLife;
-    
+
     @JoinColumn(name = "area_id", referencedColumnName = "id")
     @ManyToOne
     private Area areaId;
@@ -72,6 +73,9 @@ public class Product implements Serializable {
     private Collection<TransferredRawMaterial> transferredRmCollection;
     @OneToMany(mappedBy = "productId")
     private Collection<IssuedPackagingMaterial> mmdIssuedPackagingCollection;
+
+    @OneToMany(mappedBy = "productId")
+    private Collection<MBR> mbrCollection;
 
     public Product() {
     }
@@ -195,6 +199,16 @@ public class Product implements Serializable {
 
     public void setAreaId(Area areaId) {
         this.areaId = areaId;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<MBR> getMbrCollection() {
+        return mbrCollection;
+    }
+
+    public void setMbrCollection(Collection<MBR> mbrCollection) {
+        this.mbrCollection = mbrCollection;
     }
     
     
