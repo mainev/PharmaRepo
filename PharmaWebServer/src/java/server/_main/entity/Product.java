@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import server.mbr.entity.MBR;
+import server.mbr.entity.UDF;
 import server.mmd_tolling.entity.IssuedPackagingMaterial;
 import server.rdr.entity.TransferredRawMaterial;
 
@@ -69,13 +70,18 @@ public class Product implements Serializable {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @ManyToOne
     private Client clientId;
+
     @OneToMany(mappedBy = "productId")
     private Collection<TransferredRawMaterial> transferredRmCollection;
+
     @OneToMany(mappedBy = "productId")
     private Collection<IssuedPackagingMaterial> mmdIssuedPackagingCollection;
 
     @OneToMany(mappedBy = "productId")
-    private Collection<MBR> mbrCollection;
+    private Collection<MBR> MBRCollection;
+
+    @OneToMany(mappedBy = "productId")
+    private Collection<UDF> UDFCollection;
 
     public Product() {
     }
@@ -203,14 +209,22 @@ public class Product implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<MBR> getMbrCollection() {
-        return mbrCollection;
+    public Collection<MBR> getMBRCollection() {
+        return MBRCollection;
     }
 
-    public void setMbrCollection(Collection<MBR> mbrCollection) {
-        this.mbrCollection = mbrCollection;
+    public void setMBRCollection(Collection<MBR> MBRCollection) {
+        this.MBRCollection = MBRCollection;
     }
-    
-    
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<UDF> getUDFCollection() {
+        return UDFCollection;
+    }
+
+    public void setUDFCollection(Collection<UDF> UDFCollection) {
+        this.UDFCollection = UDFCollection;
+    }
 
 }
