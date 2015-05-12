@@ -24,6 +24,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import server.mbr.entity.RawMaterialRequirements;
 import server.rdr.entity.ReceivedRawMaterial;
 
 /**
@@ -64,6 +65,9 @@ public class RawMaterial implements Serializable {
     @OneToMany(mappedBy = "rawMaterialId")
     private Collection<server.mmd_tolling.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection;
 
+    @OneToMany(mappedBy = "rawMaterialId")
+    private Collection<RawMaterialRequirements> rawMaterialRequirementsCollection;
+    
     public RawMaterial() {
     }
 
@@ -166,4 +170,16 @@ public class RawMaterial implements Serializable {
     public void setMmdReceivedRawMaterialCollection(Collection<server.mmd_tolling.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection) {
         this.mmdReceivedRawMaterialCollection = mmdReceivedRawMaterialCollection;
     }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<RawMaterialRequirements> getRawMaterialRequirementsCollection() {
+        return rawMaterialRequirementsCollection;
+    }
+
+    public void setRawMaterialRequirementsCollection(Collection<RawMaterialRequirements> rawMaterialRequirementsCollection) {
+        this.rawMaterialRequirementsCollection = rawMaterialRequirementsCollection;
+    }
+    
+    
 }

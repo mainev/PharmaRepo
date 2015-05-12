@@ -6,7 +6,6 @@
 package server.mbr.entity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,49 +13,42 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import server._main.entity.RawMaterial;
+import server._main.entity.PackagingMaterial;
 
 /**
  *
  * @author maine
  */
 @Entity
-@Table(name = "raw_material_requirements", schema = "mbr")
+@Table(name = "packaging_material_requirements", schema = "mbr")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "RawMaterialRequirements.findAll", query = "SELECT r FROM RawMaterialRequirements r")})
-public class RawMaterialRequirements implements Serializable {
+public class PackagingMaterialRequirements implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "raw_material_id", referencedColumnName = "id")
-    @ManyToOne
-    private RawMaterial rawMaterialId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    
     @Column(name = "quantity")
     private Double quantity;
-    @Size(max = 5)
+    
     @Column(name = "unit")
+    @Size(max = 5)
     private String unit;
+    
+    @JoinColumn(name = "packaging_material_id", referencedColumnName = "id")
+    @ManyToOne
+    private PackagingMaterial packagingMaterialId;
+    
     @JoinColumn(name = "udf_id", referencedColumnName = "id")
     @ManyToOne
     private UDF udfId;
-
-    public RawMaterialRequirements() {
-    }
-
-    public RawMaterialRequirements(Integer id) {
-        this.id = id;
-    }
+    
 
     public Integer getId() {
         return id;
@@ -64,14 +56,6 @@ public class RawMaterialRequirements implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public RawMaterial getRawMaterialId() {
-        return rawMaterialId;
-    }
-
-    public void setRawMaterialId(RawMaterial rawMaterialId) {
-        this.rawMaterialId = rawMaterialId;
     }
 
     public Double getQuantity() {
@@ -90,6 +74,14 @@ public class RawMaterialRequirements implements Serializable {
         this.unit = unit;
     }
 
+    public PackagingMaterial getPackagingMaterialId() {
+        return packagingMaterialId;
+    }
+
+    public void setPackagingMaterialId(PackagingMaterial packagingMaterialId) {
+        this.packagingMaterialId = packagingMaterialId;
+    }
+
     public UDF getUdfId() {
         return udfId;
     }
@@ -97,6 +89,8 @@ public class RawMaterialRequirements implements Serializable {
     public void setUdfId(UDF udfId) {
         this.udfId = udfId;
     }
+    
+    
 
     @Override
     public int hashCode() {
@@ -108,10 +102,10 @@ public class RawMaterialRequirements implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RawMaterialRequirements)) {
+        if (!(object instanceof PackagingMaterialRequirements)) {
             return false;
         }
-        RawMaterialRequirements other = (RawMaterialRequirements) object;
+        PackagingMaterialRequirements other = (PackagingMaterialRequirements) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -120,7 +114,7 @@ public class RawMaterialRequirements implements Serializable {
 
     @Override
     public String toString() {
-        return "server.mbr.entity.RawMaterialRequirements[ id=" + id + " ]";
+        return "server.mbr.entity.PackagingMaterialRequirements[ id=" + id + " ]";
     }
 
 }

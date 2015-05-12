@@ -23,6 +23,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import server.mbr.entity.PackagingMaterialRequirements;
 import server.rdr.entity.ReceivedPackagingMaterial;
 
 /**
@@ -57,6 +58,9 @@ public class PackagingMaterial implements Serializable {
 
     @OneToMany(mappedBy = "packagingMaterialId")
     private Collection<server.mmd_tolling.entity.ReceivedPackagingMaterial> mmdReceivedPmCollection;
+
+    @OneToMany(mappedBy = "packagingMaterialId")
+    private Collection<PackagingMaterialRequirements> packagingMaterialRequirementsCollection;
 
     public PackagingMaterial() {
     }
@@ -140,6 +144,16 @@ public class PackagingMaterial implements Serializable {
 
     public void setMmdReceivedPmCollection(Collection<server.mmd_tolling.entity.ReceivedPackagingMaterial> receivedPmCollection) {
         this.mmdReceivedPmCollection = receivedPmCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<PackagingMaterialRequirements> getPackagingMaterialRequirementsCollection() {
+        return packagingMaterialRequirementsCollection;
+    }
+
+    public void setPackagingMaterialRequirementsCollection(Collection<PackagingMaterialRequirements> packagingMaterialRequirementsCollection) {
+        this.packagingMaterialRequirementsCollection = packagingMaterialRequirementsCollection;
     }
 
 }

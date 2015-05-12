@@ -52,6 +52,9 @@ public class UDF implements Serializable {
     @OneToMany(mappedBy = "udfId")
     private Collection<RawMaterialRequirements> rawMaterialRequirementsCollection;
 
+    @OneToMany(mappedBy = "udfId")
+    private Collection<PackagingMaterialRequirements> packagingMaterialRequirementsCollection;
+
     public Integer getId() {
         return id;
     }
@@ -120,6 +123,16 @@ public class UDF implements Serializable {
 
     public void setRawMaterialRequirementsCollection(Collection<RawMaterialRequirements> rawMaterialRequirementsCollection) {
         this.rawMaterialRequirementsCollection = rawMaterialRequirementsCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<PackagingMaterialRequirements> getPackagingMaterialRequirementsCollection() {
+        return packagingMaterialRequirementsCollection;
+    }
+
+    public void setPackagingMaterialRequirementsCollection(Collection<PackagingMaterialRequirements> packagingMaterialRequirementsCollection) {
+        this.packagingMaterialRequirementsCollection = packagingMaterialRequirementsCollection;
     }
 
 }
