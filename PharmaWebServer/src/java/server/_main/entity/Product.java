@@ -31,11 +31,12 @@ import server.rdr.entity.TransferredRawMaterial;
  * @author Maine
  */
 @Entity
-@Table(name = "product", schema="main")
+@Table(name = "product", schema = "main")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")})
 public class Product implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,13 +55,19 @@ public class Product implements Serializable {
     @Size(max = 10)
     @Column(name = "classification")
     private String classification;
+    @Size(max = 10)
+    @Column(name = "vr_no")
+    private String vrNo;
+    @Column(name = "shelf_life")
+    private Short shelfLife;
+
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @ManyToOne
     private Client clientId;
-     @OneToMany(mappedBy = "productId")
+    @OneToMany(mappedBy = "productId")
     private Collection<TransferredRawMaterial> transferredRmCollection;
-     @OneToMany(mappedBy = "productId")
-      private Collection<IssuedPackagingMaterial> mmdIssuedPackagingCollection;
+    @OneToMany(mappedBy = "productId")
+    private Collection<IssuedPackagingMaterial> mmdIssuedPackagingCollection;
 
     public Product() {
     }
@@ -141,8 +148,8 @@ public class Product implements Serializable {
     public String toString() {
         return "server.entity.Product[ id=" + id + " ]";
     }
-    
-      @XmlTransient
+
+    @XmlTransient
     @JsonIgnore
     public Collection<TransferredRawMaterial> getTransferredRmCollection() {
         return transferredRmCollection;
@@ -151,8 +158,8 @@ public class Product implements Serializable {
     public void setTransferredRmCollection(Collection<TransferredRawMaterial> transferredRmCollection) {
         this.transferredRmCollection = transferredRmCollection;
     }
-    
-       @XmlTransient
+
+    @XmlTransient
     @JsonIgnore
     public Collection<IssuedPackagingMaterial> getMmdIssuedPackagingCollection() {
         return mmdIssuedPackagingCollection;
@@ -161,4 +168,21 @@ public class Product implements Serializable {
     public void setMmdIssuedPackagingCollection(Collection<IssuedPackagingMaterial> transferredRmCollection) {
         this.mmdIssuedPackagingCollection = transferredRmCollection;
     }
+
+    public String getVrNo() {
+        return vrNo;
+    }
+
+    public void setVrNo(String vrNo) {
+        this.vrNo = vrNo;
+    }
+
+    public Short getShelfLife() {
+        return shelfLife;
+    }
+
+    public void setShelfLife(Short shelfLife) {
+        this.shelfLife = shelfLife;
+    }
+
 }
