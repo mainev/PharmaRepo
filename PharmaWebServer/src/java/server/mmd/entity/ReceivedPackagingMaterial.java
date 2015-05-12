@@ -28,8 +28,8 @@ import server._main.entity.PackagingMaterial;
  *
  * @author Maine
  */
-@Entity(name = "MMD_RECEIVED_PACKAGING_MATERIAL")
-@Table(name = "received_packaging_material", schema = "mmd")
+@Entity(name = "MMD_TOLLING_RECEIVED_PACKAGING_MATERIAL")
+@Table(name = "received_packaging_material", schema = "mmd_tolling")
 @XmlRootElement
 public class ReceivedPackagingMaterial implements Serializable {
 

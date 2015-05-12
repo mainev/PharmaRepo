@@ -25,7 +25,7 @@ public class ReceivedRawMaterialService {
     private DefaultClientConfig defaultClientConfig;
     private Client client;
     private WebResource webResource;
-    private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/mmd/received/rawmaterial";
+    private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/mmd/tolling/received/rawmaterial";
     private final ReceivedRawMaterialSerializer receivedRawMaterialSerializer = new ReceivedRawMaterialSerializer();
 
     public ReceivedRawMaterialService() {

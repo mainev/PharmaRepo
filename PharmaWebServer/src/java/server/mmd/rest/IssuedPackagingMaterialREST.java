@@ -25,7 +25,7 @@ import server.mmd.facade.IssuedPackagingMaterialFacade;
  *
  * @author Maine
  */
-@Path("mmdissuedpm")
+@Path("mmd/tolling/issued/packagingmaterial")
 @RequestScoped
 public class IssuedPackagingMaterialREST {
 

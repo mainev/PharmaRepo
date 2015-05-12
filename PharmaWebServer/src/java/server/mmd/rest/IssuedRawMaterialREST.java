@@ -25,7 +25,7 @@ import server.mmd.facade.IssuedRawMaterialFacade;
  *
  * @author maine
  */
-@Path("mmdissuedrawmaterial")
+@Path("mmd/tolling/issued/rawmaterial")
 @RequestScoped
 public class IssuedRawMaterialREST {
 

@@ -15,14 +15,14 @@ import server.mmd.entity.IssuedPackagingMaterial;
  *
  * @author Maine
  */
-@Stateless(name = "MMD_ISSUED_PACKAGING_MATERIAL_FACADE")
+@Stateless(name = "MMD_TOLLING_ISSUED_PACKAGING_MATERIAL_FACADE")
 public class IssuedPackagingMaterialFacade {
 
     @PersistenceContext(unitName = "PharmaWebServerPU")
     private EntityManager em;
 
     public List<IssuedPackagingMaterial> findAll() {
-        List<IssuedPackagingMaterial> list =  em.createQuery("select i from MMD_ISSUED_PACKAGING_MATERIAL i").getResultList();
+        List<IssuedPackagingMaterial> list =  em.createQuery("select i from MMD_TOLLING_ISSUED_PACKAGING_MATERIAL i").getResultList();
         return list;
     }
     

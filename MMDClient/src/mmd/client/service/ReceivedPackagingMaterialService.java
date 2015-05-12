@@ -25,7 +25,7 @@ public class ReceivedPackagingMaterialService {
     private DefaultClientConfig defaultClientConfig;
     private Client client;
     private WebResource webResource;
-    private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/mmd/received/packagingmaterial";
+    private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/mmd/tolling/received/packagingmaterial";
     private final ReceivedPackagingMaterialSerializer receivedPackagingMaterialSerializer = new ReceivedPackagingMaterialSerializer();
 
     public ReceivedPackagingMaterialService() {
