@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.mmd.rest;
+package server.mmd_tolling.rest;
 
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -16,8 +16,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
-import server.mmd.facade.ReceivedPackagingMaterialFacade;
-import server.mmd.entity.ReceivedPackagingMaterial;
+import server.mmd_tolling.facade.ReceivedPackagingMaterialFacade;
+import server.mmd_tolling.entity.ReceivedPackagingMaterial;
 
 /**
  * REST Web Service

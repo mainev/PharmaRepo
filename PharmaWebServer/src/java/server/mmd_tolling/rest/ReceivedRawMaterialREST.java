@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.mmd.rest;
+package server.mmd_tolling.rest;
 
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -17,39 +17,48 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
-import server.mmd.entity.IssuedPackagingMaterial;
-import server.mmd.facade.IssuedPackagingMaterialFacade;
+import server.mmd_tolling.entity.ReceivedRawMaterial;
+import server.mmd_tolling.facade.ReceivedRawMaterialFacade;
 
 /**
  * REST Web Service
  *
- * @author Maine
+ * @author maine
  */
-@Path("mmd/tolling/issued/packagingmaterial")
+@Path("mmd/tolling/received/rawmaterial")
 @RequestScoped
-public class IssuedPackagingMaterialREST {
+public class ReceivedRawMaterialREST {
 
     @Context
     private UriInfo context;
 
     @Inject
-    private IssuedPackagingMaterialFacade issuedPackagingMaterialFacade;
+    private ReceivedRawMaterialFacade receivedRawMaterialFacade;
 
-    public IssuedPackagingMaterialREST() {
+    
+    /**
+     * Creates a new instance of ReceivedRawMaterialREST
+     */
+    public ReceivedRawMaterialREST() {
     }
 
+    /**
+     * Retrieves representation of an instance of
+     * server.mmd.rest.ReceivedRawMaterialREST
+     *
+     * @return an instance of java.lang.String
+     */
     @GET
     @Produces("application/json")
-    public List<IssuedPackagingMaterial> getJson() {
-        return issuedPackagingMaterialFacade.findAll();
+    public List<ReceivedRawMaterial> getJson() {
+        return receivedRawMaterialFacade.findAll();
     }
 
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public IssuedPackagingMaterial create(IssuedPackagingMaterial issuedPm) {
-        return issuedPackagingMaterialFacade.create(issuedPm);
+    public void create(ReceivedRawMaterial receivedRm) {
+        receivedRawMaterialFacade.create(receivedRm);
     }
 
     @PUT

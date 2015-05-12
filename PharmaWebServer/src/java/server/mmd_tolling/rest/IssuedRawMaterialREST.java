@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.mmd.rest;
+package server.mmd_tolling.rest;
 
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -17,52 +17,53 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
-import server.mmd.entity.ReceivedRawMaterial;
-import server.mmd.facade.ReceivedRawMaterialFacade;
+import server.mmd_tolling.entity.IssuedRawMaterial;
+import server.mmd_tolling.facade.IssuedRawMaterialFacade;
 
 /**
  * REST Web Service
  *
  * @author maine
  */
-@Path("mmd/tolling/received/rawmaterial")
+@Path("mmd/tolling/issued/rawmaterial")
 @RequestScoped
-public class ReceivedRawMaterialREST {
+public class IssuedRawMaterialREST {
 
     @Context
     private UriInfo context;
 
     @Inject
-    private ReceivedRawMaterialFacade receivedRawMaterialFacade;
+    private IssuedRawMaterialFacade issuedRawMaterialFacade;
 
-    
     /**
-     * Creates a new instance of ReceivedRawMaterialREST
+     * Creates a new instance of IssuedRawMaterialREST
      */
-    public ReceivedRawMaterialREST() {
+    public IssuedRawMaterialREST() {
     }
 
     /**
      * Retrieves representation of an instance of
-     * server.mmd.rest.ReceivedRawMaterialREST
+     * server.mmd.rest.IssuedRawMaterialREST
      *
      * @return an instance of java.lang.String
      */
     @GET
     @Produces("application/json")
-    public List<ReceivedRawMaterial> getJson() {
-        return receivedRawMaterialFacade.findAll();
+    public List<IssuedRawMaterial> getJson() {
+        return issuedRawMaterialFacade.findAll();
     }
 
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(ReceivedRawMaterial receivedRm) {
-        receivedRawMaterialFacade.create(receivedRm);
+    @Produces(MediaType.APPLICATION_JSON)
+    public IssuedRawMaterial create(IssuedRawMaterial issuedRm) {
+        return issuedRawMaterialFacade.create(issuedRm);
     }
 
     @PUT
     @Consumes("application/json")
     public void putJson(String content) {
     }
+
 }

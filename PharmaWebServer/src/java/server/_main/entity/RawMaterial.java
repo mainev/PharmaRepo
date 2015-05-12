@@ -62,7 +62,7 @@ public class RawMaterial implements Serializable {
     private Collection<ReceivedRawMaterial> receivedRmCollection;
 
     @OneToMany(mappedBy = "rawMaterialId")
-    private Collection<server.mmd.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection;
+    private Collection<server.mmd_tolling.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection;
 
     public RawMaterial() {
     }
@@ -159,11 +159,11 @@ public class RawMaterial implements Serializable {
     
     @XmlTransient
     @JsonIgnore
-    public Collection<server.mmd.entity.ReceivedRawMaterial> getMmdReceivedRawMaterialCollection() {
+    public Collection<server.mmd_tolling.entity.ReceivedRawMaterial> getMmdReceivedRawMaterialCollection() {
         return mmdReceivedRawMaterialCollection;
     }
 
-    public void setMmdReceivedRawMaterialCollection(Collection<server.mmd.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection) {
+    public void setMmdReceivedRawMaterialCollection(Collection<server.mmd_tolling.entity.ReceivedRawMaterial> mmdReceivedRawMaterialCollection) {
         this.mmdReceivedRawMaterialCollection = mmdReceivedRawMaterialCollection;
     }
 }

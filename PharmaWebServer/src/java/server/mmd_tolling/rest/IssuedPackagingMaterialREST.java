@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.mmd.rest;
+package server.mmd_tolling.rest;
 
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -17,53 +17,43 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
-import server.mmd.entity.IssuedRawMaterial;
-import server.mmd.facade.IssuedRawMaterialFacade;
+import server.mmd_tolling.entity.IssuedPackagingMaterial;
+import server.mmd_tolling.facade.IssuedPackagingMaterialFacade;
 
 /**
  * REST Web Service
  *
- * @author maine
+ * @author Maine
  */
-@Path("mmd/tolling/issued/rawmaterial")
+@Path("mmd/tolling/issued/packagingmaterial")
 @RequestScoped
-public class IssuedRawMaterialREST {
+public class IssuedPackagingMaterialREST {
 
     @Context
     private UriInfo context;
 
     @Inject
-    private IssuedRawMaterialFacade issuedRawMaterialFacade;
+    private IssuedPackagingMaterialFacade issuedPackagingMaterialFacade;
 
-    /**
-     * Creates a new instance of IssuedRawMaterialREST
-     */
-    public IssuedRawMaterialREST() {
+    public IssuedPackagingMaterialREST() {
     }
 
-    /**
-     * Retrieves representation of an instance of
-     * server.mmd.rest.IssuedRawMaterialREST
-     *
-     * @return an instance of java.lang.String
-     */
     @GET
     @Produces("application/json")
-    public List<IssuedRawMaterial> getJson() {
-        return issuedRawMaterialFacade.findAll();
+    public List<IssuedPackagingMaterial> getJson() {
+        return issuedPackagingMaterialFacade.findAll();
     }
 
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public IssuedRawMaterial create(IssuedRawMaterial issuedRm) {
-        return issuedRawMaterialFacade.create(issuedRm);
+    public IssuedPackagingMaterial create(IssuedPackagingMaterial issuedPm) {
+        return issuedPackagingMaterialFacade.create(issuedPm);
     }
 
     @PUT
     @Consumes("application/json")
     public void putJson(String content) {
     }
-
 }
