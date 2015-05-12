@@ -6,14 +6,18 @@
 package server._main.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -23,15 +27,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "area", schema = "main")
 @XmlRootElement
 public class Area implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Short id;
-    
+
     @Size(max = 50)
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "areaId")
+    private Collection<Product> productCollection;
 
     public Short getId() {
         return id;
@@ -48,8 +56,6 @@ public class Area implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -75,5 +81,15 @@ public class Area implements Serializable {
     public String toString() {
         return "server._main.entity.Area[ id=" + id + " ]";
     }
-    
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<Product> getProductCollection() {
+        return productCollection;
+    }
+
+    public void setProductCollection(Collection<Product> productCollection) {
+        this.productCollection = productCollection;
+    }
+
 }

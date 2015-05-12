@@ -60,6 +60,10 @@ public class Product implements Serializable {
     private String vrNo;
     @Column(name = "shelf_life")
     private Short shelfLife;
+    
+    @JoinColumn(name = "area_id", referencedColumnName = "id")
+    @ManyToOne
+    private Area areaId;
 
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @ManyToOne
@@ -184,5 +188,15 @@ public class Product implements Serializable {
     public void setShelfLife(Short shelfLife) {
         this.shelfLife = shelfLife;
     }
+
+    public Area getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(Area areaId) {
+        this.areaId = areaId;
+    }
+    
+    
 
 }
