@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Product implements Serializable {
+
     private static final long serialVersionUID = 1L;
     private Integer id;
     private String code;
@@ -21,6 +22,9 @@ public class Product implements Serializable {
     private String genericName;
     private String classification;
     private Client clientId;
+    private String vrNo;
+    private Short shelfLife;
+
     public Product() {
     }
 
@@ -76,6 +80,22 @@ public class Product implements Serializable {
         this.clientId = clientId;
     }
 
+    public String getVrNo() {
+        return vrNo;
+    }
+
+    public void setVrNo(String vrNo) {
+        this.vrNo = vrNo;
+    }
+
+    public Short getShelfLife() {
+        return shelfLife;
+    }
+
+    public void setShelfLife(Short shelfLife) {
+        this.shelfLife = shelfLife;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -100,6 +120,5 @@ public class Product implements Serializable {
     public String toString() {
         return "server.entity.Product[ id=" + id + " ]";
     }
-    
 
 }

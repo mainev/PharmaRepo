@@ -19,6 +19,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 @XmlRootElement
 public class Product implements Serializable {
+
     private static final long serialVersionUID = 1L;
     private Integer id;
     private String code;
@@ -26,6 +27,8 @@ public class Product implements Serializable {
     private String genericName;
     private String classification;
     private Client clientId;
+    private String vrNo;
+    private Short shelfLife;
     private Collection<TransferredRawMaterial> transferredRmCollection;
 
     public Product() {
@@ -83,6 +86,22 @@ public class Product implements Serializable {
         this.clientId = clientId;
     }
 
+    public String getVrNo() {
+        return vrNo;
+    }
+
+    public void setVrNo(String vrNo) {
+        this.vrNo = vrNo;
+    }
+
+    public Short getShelfLife() {
+        return shelfLife;
+    }
+
+    public void setShelfLife(Short shelfLife) {
+        this.shelfLife = shelfLife;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -103,9 +122,7 @@ public class Product implements Serializable {
         return true;
     }
 
-   
-    
-      @XmlTransient
+    @XmlTransient
     @JsonIgnore
     public Collection<TransferredRawMaterial> getTransferredRmCollection() {
         return transferredRmCollection;
@@ -117,11 +134,11 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return code+" : "+brandName;
+        return code + " : " + brandName;
     }
-    
-     public ObservableValue<String> brandNameProperty(){
+
+    public ObservableValue<String> brandNameProperty() {
         return new SimpleStringProperty(brandName);
     }
-    
+
 }
