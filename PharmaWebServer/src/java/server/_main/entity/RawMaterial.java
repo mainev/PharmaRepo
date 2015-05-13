@@ -24,6 +24,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import server.mbr.entity.DosageInProcedure;
 import server.mbr.entity.RawMaterialRequirements;
 import server.rdr.entity.ReceivedRawMaterial;
 
@@ -67,6 +68,11 @@ public class RawMaterial implements Serializable {
 
     @OneToMany(mappedBy = "rawMaterialId")
     private Collection<RawMaterialRequirements> rawMaterialRequirementsCollection;
+    
+    @OneToMany(mappedBy = "rawMaterialId")
+    private Collection<DosageInProcedure> dosageInProcedureCollection;
+    
+    
     
     public RawMaterial() {
     }
@@ -121,6 +127,16 @@ public class RawMaterial implements Serializable {
 
     public void setClientId(Client clientId) {
         this.clientId = clientId;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<DosageInProcedure> getDosageInProcedureCollection() {
+        return dosageInProcedureCollection;
+    }
+
+    public void setDosageInProcedureCollection(Collection<DosageInProcedure> dosageInProcedureCollection) {
+        this.dosageInProcedureCollection = dosageInProcedureCollection;
     }
 
     

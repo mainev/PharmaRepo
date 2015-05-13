@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import server.mbr.entity.MBR;
+import server.mbr.entity.ManufacturingProcedure;
 import server.mbr.entity.UDF;
 import server.mmd_tolling.entity.IssuedPackagingMaterial;
 import server.rdr.entity.TransferredRawMaterial;
@@ -82,6 +83,9 @@ public class Product implements Serializable {
 
     @OneToMany(mappedBy = "productId")
     private Collection<UDF> UDFCollection;
+
+    @OneToMany(mappedBy = "productId")
+    private Collection<ManufacturingProcedure> manufacturingProcedureCollection;
 
     public Product() {
     }
@@ -225,6 +229,16 @@ public class Product implements Serializable {
 
     public void setUDFCollection(Collection<UDF> UDFCollection) {
         this.UDFCollection = UDFCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<ManufacturingProcedure> getManufacturingProcedureCollection() {
+        return manufacturingProcedureCollection;
+    }
+
+    public void setManufacturingProcedureCollection(Collection<ManufacturingProcedure> manufacturingProcedureCollection) {
+        this.manufacturingProcedureCollection = manufacturingProcedureCollection;
     }
 
 }

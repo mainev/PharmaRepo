@@ -29,41 +29,43 @@ import server._main.entity.Product;
 @Table(name = "mbr", schema = "mbr")
 @XmlRootElement
 public class MBR implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @Column(name = "batch_size")
     private Double batchSize;
-    
+
     @Column(name = "batch_no")
-    @Size( max = 10)
+    @Size(max = 10)
     private String batchNo;
-    
+
     @Column(name = "unit")
-    @Size (max = 5)
+    @Size(max = 5)
     private String unit;
-    
+
     @Column(name = "mfg_date")
     @Temporal(TemporalType.DATE)
     private Date mfgDate;
-    
+
     @Column(name = "exp_date")
     @Temporal(TemporalType.DATE)
     private Date expDate;
-    
+
     @Column(name = "po_no")
     @Size(max = 15)
     private String poNo;
-    
-    @Column(name = "pack_size")
-    private Double packSize;
+
+    @JoinColumn(name = "pack_size_id", referencedColumnName = "id")
+    @ManyToOne
+    private PackSize packSizeId;
 
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     @ManyToOne
     private Product productId;
-    
+
     public Integer getId() {
         return id;
     }
@@ -120,14 +122,6 @@ public class MBR implements Serializable {
         this.poNo = poNo;
     }
 
-    public Double getPackSize() {
-        return packSize;
-    }
-
-    public void setPackSize(Double packSize) {
-        this.packSize = packSize;
-    }
-
     public Product getProductId() {
         return productId;
     }
@@ -135,10 +129,15 @@ public class MBR implements Serializable {
     public void setProductId(Product productId) {
         this.productId = productId;
     }
-    
-    
 
-    
+    public PackSize getPackSizeId() {
+        return packSizeId;
+    }
+
+    public void setPackSizeId(PackSize packSizeId) {
+        this.packSizeId = packSizeId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -163,5 +162,5 @@ public class MBR implements Serializable {
     public String toString() {
         return "server.mbr.entity.MBR[ id=" + id + " ]";
     }
-    
+
 }
