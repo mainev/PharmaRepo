@@ -10,8 +10,6 @@ import java.util.Collection;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -29,8 +27,9 @@ public class Product implements Serializable {
     private Client clientId;
     private String vrNo;
     private Short shelfLife;
-    private Collection<TransferredRawMaterial> transferredRmCollection;
 
+    private Area areaId;
+    private Collection<PackagingSize> packagingSizeCollection;
     public Product() {
     }
 
@@ -102,35 +101,23 @@ public class Product implements Serializable {
         this.shelfLife = shelfLife;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public Area getAreaId() {
+        return areaId;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Product)) {
-            return false;
-        }
-        Product other = (Product) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setAreaId(Area areaId) {
+        this.areaId = areaId;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<TransferredRawMaterial> getTransferredRmCollection() {
-        return transferredRmCollection;
+    public Collection<PackagingSize> getPackagingSizeCollection() {
+        return packagingSizeCollection;
     }
 
-    public void setTransferredRmCollection(Collection<TransferredRawMaterial> transferredRmCollection) {
-        this.transferredRmCollection = transferredRmCollection;
+    public void setPackagingSizeCollection(Collection<PackagingSize> packagingSizeCollection) {
+        this.packagingSizeCollection = packagingSizeCollection;
     }
+    
+    
 
     @Override
     public String toString() {

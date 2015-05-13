@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -71,6 +73,19 @@ public class Product implements Serializable {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @ManyToOne
     private Client clientId;
+    
+    @JoinTable(name = "product_packaging_size", schema="main", 
+            joinColumns = { 
+                   @JoinColumn(name = "product_id", referencedColumnName = "id")
+            }, 
+            inverseJoinColumns = { 
+                   @JoinColumn(name = "packaging_size_id", referencedColumnName = "id")
+            }
+     )
+    @ManyToMany
+    private Collection<PackagingSize> packagingSizeCollection;
+    
+   
 
     @OneToMany(mappedBy = "productId")
     private Collection<TransferredRawMaterial> transferredRmCollection;
@@ -86,6 +101,8 @@ public class Product implements Serializable {
 
     @OneToMany(mappedBy = "productId")
     private Collection<ManufacturingProcedure> manufacturingProcedureCollection;
+
+   
 
     public Product() {
     }
@@ -141,7 +158,17 @@ public class Product implements Serializable {
     public void setClientId(Client clientId) {
         this.clientId = clientId;
     }
+    public Collection<PackagingSize> getPackagingSizeCollection() {
+        return packagingSizeCollection;
+    }
 
+    public void setPackagingSizeCollection(Collection<PackagingSize> packagingSizeCollection) {
+        this.packagingSizeCollection = packagingSizeCollection;
+    }
+
+ 
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -240,5 +267,9 @@ public class Product implements Serializable {
     public void setManufacturingProcedureCollection(Collection<ManufacturingProcedure> manufacturingProcedureCollection) {
         this.manufacturingProcedureCollection = manufacturingProcedureCollection;
     }
+
+    
+    
+    
 
 }

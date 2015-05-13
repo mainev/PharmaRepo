@@ -225,6 +225,7 @@ public class TransferRawMaterialController implements Initializable {
     @FXML
     private void transferRawMaterial() {
         Product selectedProduct = (Product) productTextField.getSelectedItem();
+        System.out.println(selectedProduct.getPackagingSizeCollection());
         RawMaterial selectedRm = (RawMaterial) rmTextField.getSelectedItem();
         String ts = textFieldTos.getText();
         String so = textFieldSo.getText();

@@ -33,6 +33,7 @@ public class ApplicationConfig extends Application {
         resources.add(server._main.rest.ClientREST.class);
         resources.add(server._main.rest.EquipmentREST.class);
         resources.add(server._main.rest.PackagingMaterialREST.class);
+        resources.add(server._main.rest.PackagingSizeREST.class);
         resources.add(server._main.rest.ProductREST.class);
         resources.add(server._main.rest.RawMaterialREST.class);
         resources.add(server.mbr.rest.CompoundingProcedureREST.class);
@@ -40,7 +41,6 @@ public class ApplicationConfig extends Application {
         resources.add(server.mbr.rest.EncapsulationProcedureREST.class);
         resources.add(server.mbr.rest.MBRRest.class);
         resources.add(server.mbr.rest.ManufacturingProcedureREST.class);
-        resources.add(server.mbr.rest.PackSizeREST.class);
         resources.add(server.mbr.rest.PackagingMaterialREST.class);
         resources.add(server.mbr.rest.PackagingProcedureREST.class);
         resources.add(server.mbr.rest.RawMaterialRequirementsREST.class);

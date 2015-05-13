@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mmd.client.entity;
+package mbr.client.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -144,7 +146,18 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "server.entity.Product[ id=" + id + " ]";
+        return code + " : " + brandName;
+    }
+    
+    public ObservableList<PackagingSize> packagingSizeCollectionProperty(){
+        ObservableList<PackagingSize> result = FXCollections.observableArrayList();
+        
+        if(!packagingSizeCollection.isEmpty()){
+            for(PackagingSize p : packagingSizeCollection){
+                result.add(p);
+            }
+        }
+        return result;
     }
 
     

@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.mbr.facade;
+package server._main.facade;
 
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import server.mbr.entity.PackSize;
+import server._main.entity.PackagingSize;
 
 /**
  *
  * @author maine
  */
 @Stateless
-public class PackSizeFacade {
+public class PackagingSizeFacade {
 
     @PersistenceContext(unitName = "PharmaWebServerPU")
     private EntityManager em;
-    
-    public List<PackSize> findAll(){
-        return em.createQuery("select p from PackSize p").getResultList();
+
+    public List<PackagingSize> findAll() {
+        return em.createQuery("Select p from PackagingSize p").getResultList();
     }
 }

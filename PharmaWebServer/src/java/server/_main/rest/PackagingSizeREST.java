@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.mbr.rest;
+package server._main.rest;
 
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -15,42 +15,42 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
-import server.mbr.entity.PackSize;
-import server.mbr.facade.PackSizeFacade;
+import server._main.entity.PackagingSize;
+import server._main.facade.PackagingSizeFacade;
 
 /**
  * REST Web Service
  *
  * @author maine
  */
-@Path("mbr/packsize")
+@Path("packagingsize")
 @RequestScoped
-public class PackSizeREST {
+public class PackagingSizeREST {
 
     @Context
     private UriInfo context;
     
     @Inject
-    private PackSizeFacade packSizeFacade;
+    private PackagingSizeFacade packagingSizeFacade;
 
     /**
-     * Creates a new instance of PackSizeREST
+     * Creates a new instance of PackagingSizeREST
      */
-    public PackSizeREST() {
+    public PackagingSizeREST() {
     }
 
     /**
-     * Retrieves representation of an instance of server.mbr.facade.PackSizeREST
+     * Retrieves representation of an instance of server._main.rest.PackagingSizeREST
      * @return an instance of java.lang.String
      */
     @GET
     @Produces("application/json")
-    public List<PackSize> getJson() {
-       return packSizeFacade.findAll();
+    public List<PackagingSize> getJson() {
+       return packagingSizeFacade.findAll();
     }
 
     /**
-     * PUT method for updating or creating an instance of PackSizeREST
+     * PUT method for updating or creating an instance of PackagingSizeREST
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */

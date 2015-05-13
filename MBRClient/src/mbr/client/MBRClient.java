@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mmd.client;
+package mbr.client;
 
+import mbr.client.controller.MainController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -17,50 +19,33 @@ import javafx.stage.Stage;
  *
  * @author maine
  */
-public class MMDClient extends Application {
+public class MBRClient extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-       /*
-        Parent root = FXMLLoader.load(getClass().getResource("view/Main.fxml"));
-        Scene scene = new Scene(root);
+        Pane mainPane = loadMainPane();
+        Scene scene = new Scene(mainPane);
+        stage.setTitle("");
+        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
-        stage.setMaximized(true);
-        stage.setTitle("MMD Management System");
-        */
-        
-        stage.setTitle("MMD Management System");
-        stage.setMaximized(true);
-        stage.setScene(createScene(loadMainPane()));
-
-        stage.show();
-
     }
-    
-    private Pane loadMainPane() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-
-        AnchorPane mainPane = (AnchorPane) loader.load(getClass().getResourceAsStream(ScreenNavigator.MAIN));
-
-        MainController mainController = loader.getController();
-
-        ScreenNavigator.setMainController(mainController);
-
-        return mainPane;
-    }
-    
-     private Scene createScene(Pane mainPane) {
-        Scene scene = new Scene(mainPane);
-        return scene;
-    }
-
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private Pane loadMainPane() throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane mainPane = (AnchorPane) loader.load(getClass().getResourceAsStream(ScreenNavigator.MAIN));
+        MainController mainController = loader.getController();
+        ScreenNavigator.setMainController(mainController);
+
+        return mainPane;
     }
 
 }
