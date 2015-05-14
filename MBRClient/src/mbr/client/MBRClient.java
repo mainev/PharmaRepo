@@ -39,12 +39,13 @@ public class MBRClient extends Application {
     }
 
     private Pane loadMainPane() throws IOException {
-        
+
         FXMLLoader loader = new FXMLLoader();
         AnchorPane mainPane = (AnchorPane) loader.load(getClass().getResourceAsStream(ScreenNavigator.MAIN));
         MainController mainController = loader.getController();
         ScreenNavigator.setMainController(mainController);
 
+        ScreenNavigator.loadScreen(ScreenNavigator.WELCOME_SCREEN);
         return mainPane;
     }
 

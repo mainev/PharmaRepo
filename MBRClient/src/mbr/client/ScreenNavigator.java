@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 public class ScreenNavigator {
 
     public static final String MAIN = "view/Main.fxml";
+     public static final String WELCOME_SCREEN = "view/welcome.fxml";
     public static final String MBR_LIST_SCREEN = "view/mbr/list.fxml";
 
     private static MainController mainController;
@@ -32,7 +33,7 @@ public class ScreenNavigator {
                     )
             );
         } catch (IOException e) {
-            e.printStackTrace();
+         //   e.printStackTrace();
             System.out.println(e.getMessage());
         }
     }

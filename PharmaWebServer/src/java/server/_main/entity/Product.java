@@ -93,8 +93,8 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "productId")
     private Collection<IssuedPackagingMaterial> mmdIssuedPackagingCollection;
 
-    @OneToMany(mappedBy = "productId")
-    private Collection<MBR> MBRCollection;
+//    @OneToMany(mappedBy = "productId")
+//    private Collection<MBR> MBRCollection;
 
     @OneToMany(mappedBy = "productId")
     private Collection<UDF> UDFCollection;
@@ -102,7 +102,8 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "productId")
     private Collection<ManufacturingProcedure> manufacturingProcedureCollection;
 
-   
+   @OneToMany(mappedBy = "productId")
+   private Collection<ProductWithPackSize> productWithPackSizeCollection;
 
     public Product() {
     }
@@ -164,6 +165,15 @@ public class Product implements Serializable {
 
     public void setPackagingSizeCollection(Collection<PackagingSize> packagingSizeCollection) {
         this.packagingSizeCollection = packagingSizeCollection;
+    }
+
+ @XmlTransient
+    public Collection<ProductWithPackSize> getProductWithPackSizeCollection() {
+        return productWithPackSizeCollection;
+    }
+
+    public void setProductWithPackSizeCollection(Collection<ProductWithPackSize> productWithPackSizeCollection) {
+        this.productWithPackSizeCollection = productWithPackSizeCollection;
     }
 
  
@@ -237,16 +247,16 @@ public class Product implements Serializable {
     public void setAreaId(Area areaId) {
         this.areaId = areaId;
     }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<MBR> getMBRCollection() {
-        return MBRCollection;
-    }
-
-    public void setMBRCollection(Collection<MBR> MBRCollection) {
-        this.MBRCollection = MBRCollection;
-    }
+//
+//    @XmlTransient
+//    @JsonIgnore
+//    public Collection<MBR> getMBRCollection() {
+//        return MBRCollection;
+//    }
+//
+//    public void setMBRCollection(Collection<MBR> MBRCollection) {
+//        this.MBRCollection = MBRCollection;
+//    }
 
     @XmlTransient
     @JsonIgnore

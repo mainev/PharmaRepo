@@ -8,6 +8,7 @@ package mbr.client.utils;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -25,8 +26,10 @@ public class DateConverter {
          * @return 
          */
         public static LocalDate convertDateToLocalDate(Date date){
+
             if(date != null){
                 LocalDate localDate = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+
                 return localDate;
             }
             else return null;

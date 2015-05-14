@@ -19,9 +19,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import mbr.client.ScreenNavigator;
 import mbr.client.controls.TextFieldWithSearch;
 import mbr.client.entity.PackagingSize;
 import mbr.client.entity.Product;
+import mbr.client.service.MBRService;
 import mbr.client.service.ProductService;
 import mbr.client.utils.DateConverter;
 
@@ -54,6 +56,7 @@ public class NewController implements Initializable {
     VBox _vBoxProductSelection;
     TextFieldWithSearch<Product> textFieldWithProductSearch;
     ProductService productService = new ProductService();
+    MBRService mbrService = new MBRService();
     Product selectedProduct;
     /**
      * Initializes the controller class.
@@ -67,7 +70,6 @@ public class NewController implements Initializable {
 
     private void initTextFieldWithProductSearch() {
         ObservableList<Product> productList = productService.getProductList();
-
         textFieldWithProductSearch = new TextFieldWithSearch(productList);
         textFieldWithProductSearch.setAlignment(Pos.CENTER);
         _gridPaneInput.add(textFieldWithProductSearch, 1, 0);
@@ -98,6 +100,11 @@ public class NewController implements Initializable {
         Date expDate = DateConverter.convertLocalDateToDate(_datePickerExpDate.getValue());
         String poNo = _textFieldPoNo.getText();
         
+        mbrService.createMBR(selectedProduct,packagingSize, batchSize, batchNo, unit, mfgDate, expDate, poNo);
+    
+        Stage stage = (Stage) _gridPaneInput.getScene().getWindow();
+        stage.close();
+        ScreenNavigator.loadScreen(ScreenNavigator.MBR_LIST_SCREEN);
     }
 
     @FXML
@@ -106,10 +113,6 @@ public class NewController implements Initializable {
         stage.close();
     }
 
-    @FXML
-    private void handlePackagingSizeChoiceBoxOnClick() {
-
-        System.out.println("haaaaa");
-    }
+   
 
 }

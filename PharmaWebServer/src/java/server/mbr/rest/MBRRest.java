@@ -13,8 +13,10 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import server.mbr.entity.MBR;
 import server.mbr.facade.MBRFacade;
 
@@ -32,6 +34,7 @@ public class MBRRest {
 
     @Inject
     private MBRFacade mbrFacade;
+
     /**
      * Creates a new instance of MBRRest
      */
@@ -40,6 +43,7 @@ public class MBRRest {
 
     /**
      * Retrieves representation of an instance of server.mbr.rest.MBRRest
+     *
      * @return an instance of java.lang.String
      */
     @GET
@@ -48,13 +52,13 @@ public class MBRRest {
         return mbrFacade.findAll();
     }
 
-    /**
-     * PUT method for updating or creating an instance of MBRRest
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
-     */
-    @PUT
-    @Consumes("application/json")
-    public void putJson(String content) {
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void create(@QueryParam("mbr_product_id") String mbrProductId, 
+            @QueryParam("mbr_packaging_size_id") String mbrPackagingSizeId, MBR mbr) {
+        int productId = Integer.parseInt(mbrProductId);
+        int packSizeId = Integer.parseInt(mbrPackagingSizeId);
+        mbrFacade.create(productId, packSizeId, mbr);
     }
 }

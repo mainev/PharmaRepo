@@ -17,9 +17,9 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="New..." />
+                        <MenuItem fx:id="_newMBR" mnemonicParsing="false" onAction="#createNewMBR" text="New..." />
                         <SeparatorMenuItem mnemonicParsing="false" />
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -40,8 +40,7 @@
                <children>
                   <VBox layoutX="50.0" layoutY="-21.0" prefHeight="635.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ToggleButton mnemonicParsing="false" onAction="#openMBRListView" prefHeight="80.0" prefWidth="250.0" text="MBR" />
-                        <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="250.0" text="ToggleButton" />
+                        <ToggleButton fx:id="_menuButtonMBR" mnemonicParsing="false" prefHeight="80.0" prefWidth="250.0" text="MBR" />
                      </children>
                   </VBox>
                </children>

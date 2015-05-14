@@ -20,7 +20,7 @@ import mbr.client.entity.Product;
  */
 public class ProductSerializer {
 
-    public ObservableList<Product> deserializeList(String jsonOutput) {
+    public static ObservableList<Product> deserializeList(String jsonOutput) {
         ObservableList<Product> observableProductList = FXCollections.observableArrayList();
         Gson gson = new Gson();
         Type datasetListType = new TypeToken<Collection<Product>>() {

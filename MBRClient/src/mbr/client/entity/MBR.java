@@ -25,6 +25,21 @@ public class MBR implements Serializable {
     private Date expDate;
     private String poNo;
     private Product productId;
+    private PackagingSize packagingSizeId;
+    private ProductWithPackSize productWithPackSizeId;
+
+    public MBR(Product productId, PackagingSize packagingSizeId, Double batchSize, String batchNo, String unit, Date mfgDate, Date expDate,
+            String poNo) {
+        this.productId = productId;
+        this.batchSize = batchSize;
+        this.batchNo = batchNo;
+        this.unit = unit;
+        this.mfgDate = mfgDate;
+        this.expDate = expDate;
+        this.poNo = poNo;
+        this.packagingSizeId = packagingSizeId;
+
+    }
 
     public Integer getId() {
         return id;
@@ -90,7 +105,22 @@ public class MBR implements Serializable {
         this.productId = productId;
     }
 
-  
+    public PackagingSize getPackagingSizeId() {
+        return packagingSizeId;
+    }
+
+    public void setPackagingSizeId(PackagingSize packagingSizeId) {
+        this.packagingSizeId = packagingSizeId;
+    }
+
+    public ProductWithPackSize getProductWithPackSizeId() {
+        return productWithPackSizeId;
+    }
+
+    public void setProductWithPackSizeId(ProductWithPackSize productWithPackSizeId) {
+        this.productWithPackSizeId = productWithPackSizeId;
+    }
+
     @Override
     public String toString() {
         return "server.mbr.entity.MBR[ id=" + id + " ]";

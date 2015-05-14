@@ -27,11 +27,12 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author maine
  */
 @Entity
-@Table(name = "packaging_size", schema="main")
+@Table(name = "packaging_size", schema = "main")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PackagingSize.findAll", query = "SELECT p FROM PackagingSize p")})
 public class PackagingSize implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,10 +48,15 @@ public class PackagingSize implements Serializable {
     @Size(max = 50)
     @Column(name = "container")
     private String container;
-    
+
     @ManyToMany(mappedBy = "packagingSizeCollection")
     private Collection<Product> productCollection;
 
+//    @OneToMany(mappedBy = "packagingSizeId")
+//    private Collection<MBR> MBRCollection;
+
+    @OneToMany(mappedBy = "packagingSizeId")
+    private Collection<ProductWithPackSize> productWithPackSizeCollection;
     public PackagingSize() {
     }
 
@@ -90,8 +96,6 @@ public class PackagingSize implements Serializable {
         this.container = container;
     }
 
-   
-
     @XmlTransient
     public Collection<Product> getProductCollection() {
         return productCollection;
@@ -99,6 +103,24 @@ public class PackagingSize implements Serializable {
 
     public void setProductCollection(Collection<Product> productCollection) {
         this.productCollection = productCollection;
+    }
+
+//     @XmlTransient
+//    public Collection<MBR> getMBRCollection() {
+//        return MBRCollection;
+//    }
+//
+//    public void setMBRCollection(Collection<MBR> MBRCollection) {
+//        this.MBRCollection = MBRCollection;
+//    }
+
+    @XmlTransient
+    public Collection<ProductWithPackSize> getProductWithPackSizeCollection() {
+        return productWithPackSizeCollection;
+    }
+
+    public void setProductWithPackSizeCollection(Collection<ProductWithPackSize> productWithPackSizeCollection) {
+        this.productWithPackSizeCollection = productWithPackSizeCollection;
     }
 
     
@@ -126,5 +148,5 @@ public class PackagingSize implements Serializable {
     public String toString() {
         return "entity.PackagingSize[ id=" + id + " ]";
     }
-    
+
 }

@@ -23,10 +23,16 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView prefHeight="570.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="_tableViewMBRList" prefHeight="570.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="_colProductCode" prefWidth="132.0" text="Product Code" />
+                      <TableColumn fx:id="_colProductBrandName" prefWidth="312.0" text="Product Name" />
+                        <TableColumn fx:id="_colBatchNo" prefWidth="103.0" text="Batch No" />
+                        <TableColumn fx:id="_colBatchSize" prefWidth="107.0" text="Batch Size" />
+                        <TableColumn fx:id="_colMfgDate" prefWidth="129.0" text="Mfg Date" />
+                        <TableColumn fx:id="_colExpDate" prefWidth="117.0" text="Exp Date" />
+                        <TableColumn fx:id="_colPoNo" prefWidth="114.0" text="PO No" />
+                        <TableColumn fx:id="_colPackSize" prefWidth="125.0" text="Pack Size" />
                     </columns>
                   </TableView>
                </children>

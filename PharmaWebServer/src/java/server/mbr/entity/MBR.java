@@ -19,7 +19,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import server._main.entity.Product;
+import javax.xml.bind.annotation.XmlTransient;
+import server._main.entity.ProductWithPackSize;
 
 /**
  *
@@ -59,9 +60,40 @@ public class MBR implements Serializable {
     private String poNo;
 
 
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    @ManyToOne
-    private Product productId;
+//    @JoinColumn(name = "product_id", referencedColumnName = "id")
+//    @ManyToOne
+//    private Product productId;
+    
+   
+    
+//     @JoinTable(name = "product_packaging_size", schema="main", 
+//            joinColumns = { 
+//                   @JoinColumn(name = "product_id", referencedColumnName = "id")
+//            }, 
+//            inverseJoinColumns = { 
+//                   @JoinColumn(name = "packaging_size_id", referencedColumnName = "id")
+//            }
+//     )
+//    @ManyToOne
+//    private Product productId;
+//     
+//       @JoinTable(name = "product_packaging_size", schema="main", 
+//            joinColumns = { 
+//                   @JoinColumn(name = "product_id", referencedColumnName = "id")
+//            }, 
+//            inverseJoinColumns = { 
+//                   @JoinColumn(name = "packaging_size_id", referencedColumnName = "id")
+//            }
+//     )
+//    @ManyToOne
+//    private PackagingSize packagingSizeId;
+     
+   //@Column(name="product_packaging_size_id")
+   //private Integer productPackagingSizeId;
+   
+   @JoinColumn(name = "product_packaging_size_id", referencedColumnName = "id")
+   @ManyToOne
+   private ProductWithPackSize productWithPackSizeId;
 
     public Integer getId() {
         return id;
@@ -119,14 +151,42 @@ public class MBR implements Serializable {
         this.poNo = poNo;
     }
 
-    public Product getProductId() {
-        return productId;
+    //@XmlTransient
+    public ProductWithPackSize getProductWithPackSizeId() {
+        return productWithPackSizeId;
     }
 
-    public void setProductId(Product productId) {
-        this.productId = productId;
+    public void setProductWithPackSizeId(ProductWithPackSize productWithPackSizeId) {
+        this.productWithPackSizeId = productWithPackSizeId;
     }
 
+    
+//    public Product getProductId() {
+//        return productId;
+//    }
+//
+//    public void setProductId(Product productId) {
+//        this.productId = productId;
+//    }
+//
+//    public PackagingSize getPackagingSizeId() {
+//        return packagingSizeId;
+//    }
+//
+//    public void setPackagingSizeId(PackagingSize packagingSizeId) {
+//        this.packagingSizeId = packagingSizeId;
+//    }
+
+//    @XmlTransient
+//    public Integer getProductPackagingSizeId() {
+//        return productPackagingSizeId;
+//    }
+//
+//    public void setProductPackagingSizeId(Integer productPackagingSizeId) {
+//        this.productPackagingSizeId = productPackagingSizeId;
+//    }
+
+    
   
     @Override
     public int hashCode() {

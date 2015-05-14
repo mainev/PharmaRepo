@@ -20,11 +20,11 @@ import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
  */
 public class ProductService {
 
-    private DefaultClientConfig defaultClientConfig;
-    private Client client;
-    private WebResource webResource;
-    private final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/product";
-    ProductSerializer productSerializer = new ProductSerializer();
+    public DefaultClientConfig defaultClientConfig;
+    public Client client;
+    public WebResource webResource;
+    public final String BASE_URI = "http://localhost:8080/PharmaWebServer/webresources/product";
+   // ProductSerializer productSerializer = new ProductSerializer();
 
     public ProductService() {
         initClient();
@@ -36,13 +36,10 @@ public class ProductService {
         client = Client.create(defaultClientConfig);
     }
 
-    public ObservableList<Product> getProductList() {
-
+    public  ObservableList<Product> getProductList() {
         webResource = client.resource(BASE_URI);
         ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
         String jsonOutput = response.getEntity(String.class);
-
-        return productSerializer.deserializeList(jsonOutput);
-
+        return ProductSerializer.deserializeList(jsonOutput);
     }
 }
