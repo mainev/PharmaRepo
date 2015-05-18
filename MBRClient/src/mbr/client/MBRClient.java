@@ -9,7 +9,6 @@ import mbr.client.controller.MainController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -23,6 +22,7 @@ public class MBRClient extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+       //  setUserAgentStylesheet(STYLESHEET_CASPIAN);
         Pane mainPane = loadMainPane();
         Scene scene = new Scene(mainPane);
         stage.setTitle("");

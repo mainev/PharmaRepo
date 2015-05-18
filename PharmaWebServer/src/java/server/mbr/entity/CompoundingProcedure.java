@@ -43,9 +43,8 @@ public class CompoundingProcedure implements Serializable {
     @Size(max = 200)
     private String procedureHead;
 
-    @Column(name = "procedure_foot")
-    @Size(max = 200)
-    private String procedureFoot;
+    @Column(name = "footer")
+    private Boolean footer;
 
     @Column(name = "done_by")
     @Size(max = 100)
@@ -86,13 +85,15 @@ public class CompoundingProcedure implements Serializable {
         this.procedureHead = procedureHead;
     }
 
-    public String getProcedureFoot() {
-        return procedureFoot;
+    public Boolean getFooter() {
+        return footer;
     }
 
-    public void setProcedureFoot(String procedureFoot) {
-        this.procedureFoot = procedureFoot;
+    public void setFooter(Boolean footer) {
+        this.footer = footer;
     }
+
+   
 
     public String getDoneBy() {
         return doneBy;

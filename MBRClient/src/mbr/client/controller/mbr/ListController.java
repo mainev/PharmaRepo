@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,6 +29,11 @@ import javafx.stage.StageStyle;
 import mbr.client.entity.MBR;
 import mbr.client.service.MBRService;
 import mbr.client.utils.DateConverter;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * FXML Controller class
@@ -96,6 +103,16 @@ public class ListController implements Initializable {
             e.printStackTrace();
             System.out.println("EXCEPTIONS: \n" + e.getMessage());
         }
+    }
+    
+    @FXML
+   public void handlePrintButton() throws JRException{
+     Map<String, Object> params = new HashMap();
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport("reports/mbr/TABLET HUMAN/mbr_template.jasper",
+                params, new JREmptyDataSource());
+
+        JasperViewer.viewReport(jasperPrint, false);
     }
 
 }

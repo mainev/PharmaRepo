@@ -17,6 +17,11 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
+                        <Menu mnemonicParsing="false" text="AMBOT">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                          </items>
+                        </Menu>
                         <MenuItem fx:id="_newMBR" mnemonicParsing="false" onAction="#createNewMBR" text="New..." />
                         <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />

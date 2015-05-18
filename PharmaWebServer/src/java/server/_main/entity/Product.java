@@ -73,19 +73,17 @@ public class Product implements Serializable {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @ManyToOne
     private Client clientId;
-    
-    @JoinTable(name = "product_packaging_size", schema="main", 
-            joinColumns = { 
-                   @JoinColumn(name = "product_id", referencedColumnName = "id")
-            }, 
-            inverseJoinColumns = { 
-                   @JoinColumn(name = "packaging_size_id", referencedColumnName = "id")
+
+    @JoinTable(name = "product_packaging_size", schema = "main",
+            joinColumns = {
+                @JoinColumn(name = "product_id", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {
+                @JoinColumn(name = "packaging_size_id", referencedColumnName = "id")
             }
-     )
+    )
     @ManyToMany
     private Collection<PackagingSize> packagingSizeCollection;
-    
-   
 
     @OneToMany(mappedBy = "productId")
     private Collection<TransferredRawMaterial> transferredRmCollection;
@@ -95,15 +93,14 @@ public class Product implements Serializable {
 
 //    @OneToMany(mappedBy = "productId")
 //    private Collection<MBR> MBRCollection;
-
     @OneToMany(mappedBy = "productId")
     private Collection<UDF> UDFCollection;
 
     @OneToMany(mappedBy = "productId")
     private Collection<ManufacturingProcedure> manufacturingProcedureCollection;
 
-   @OneToMany(mappedBy = "productId")
-   private Collection<ProductWithPackSize> productWithPackSizeCollection;
+    @OneToMany(mappedBy = "productId")
+    private Collection<ProductWithPackSize> productWithPackSizeCollection;
 
     public Product() {
     }
@@ -159,6 +156,7 @@ public class Product implements Serializable {
     public void setClientId(Client clientId) {
         this.clientId = clientId;
     }
+
     public Collection<PackagingSize> getPackagingSizeCollection() {
         return packagingSizeCollection;
     }
@@ -167,7 +165,7 @@ public class Product implements Serializable {
         this.packagingSizeCollection = packagingSizeCollection;
     }
 
- @XmlTransient
+    @XmlTransient
     public Collection<ProductWithPackSize> getProductWithPackSizeCollection() {
         return productWithPackSizeCollection;
     }
@@ -176,9 +174,6 @@ public class Product implements Serializable {
         this.productWithPackSizeCollection = productWithPackSizeCollection;
     }
 
- 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -277,9 +272,5 @@ public class Product implements Serializable {
     public void setManufacturingProcedureCollection(Collection<ManufacturingProcedure> manufacturingProcedureCollection) {
         this.manufacturingProcedureCollection = manufacturingProcedureCollection;
     }
-
-    
-    
-    
 
 }

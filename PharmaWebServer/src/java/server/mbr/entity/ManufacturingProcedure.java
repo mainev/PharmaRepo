@@ -48,16 +48,13 @@ public class ManufacturingProcedure implements Serializable {
     private Collection<PackagingProcedure> packagingProcedureCollection;
 
     @OneToMany(mappedBy = "manufacturingProcedureId")
-    private Collection<BottlingProcedure> bottlingProcedureCollection;
-
-    @OneToMany(mappedBy = "manufacturingProcedureId")
-    private Collection<EncapsulationProcedure> encapsulationProcedureCollection;
-
-    @OneToMany(mappedBy = "manufacturingProcedureId")
     private Collection<EquipmentRequirementsCompounding> equipmentRequirementsCompoundingCollection;
 
     @OneToMany(mappedBy = "manufacturingProcedureId")
     private Collection<EquipmentRequirementsEncapsulation> equipmentRequirementsEncapsulationCollection;
+    
+    @OneToMany(mappedBy = "manufacturingProcedureId")
+    private Collection<EquipmentRequirementsCoding> equipmentRequirementsCodingCollection;
 
     public Integer getId() {
         return id;
@@ -97,26 +94,6 @@ public class ManufacturingProcedure implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<BottlingProcedure> getBottlingProcedureCollection() {
-        return bottlingProcedureCollection;
-    }
-
-    public void setBottlingProcedureCollection(Collection<BottlingProcedure> bottlingProcedureCollection) {
-        this.bottlingProcedureCollection = bottlingProcedureCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<EncapsulationProcedure> getEncapsulationProcedureCollection() {
-        return encapsulationProcedureCollection;
-    }
-
-    public void setEncapsulationProcedureCollection(Collection<EncapsulationProcedure> encapsulationProcedureCollection) {
-        this.encapsulationProcedureCollection = encapsulationProcedureCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
     public Collection<EquipmentRequirementsCompounding> getEquipmentRequirementsCompoundingCollection() {
         return equipmentRequirementsCompoundingCollection;
     }
@@ -133,6 +110,16 @@ public class ManufacturingProcedure implements Serializable {
 
     public void setEquipmentRequirementsEncapsulationCollection(Collection<EquipmentRequirementsEncapsulation> equipmentRequirementsEncapsulationCollection) {
         this.equipmentRequirementsEncapsulationCollection = equipmentRequirementsEncapsulationCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<EquipmentRequirementsCoding> getEquipmentRequirementsCodingCollection() {
+        return equipmentRequirementsCodingCollection;
+    }
+
+    public void setEquipmentRequirementsCodingCollection(Collection<EquipmentRequirementsCoding> equipmentRequirementsCodingCollection) {
+        this.equipmentRequirementsCodingCollection = equipmentRequirementsCodingCollection;
     }
 
     @Override

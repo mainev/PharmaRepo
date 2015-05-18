@@ -38,7 +38,6 @@ public class ApplicationConfig extends Application {
         resources.add(server._main.rest.RawMaterialREST.class);
         resources.add(server.mbr.rest.CompoundingProcedureREST.class);
         resources.add(server.mbr.rest.DosageInProcedureREST.class);
-        resources.add(server.mbr.rest.EncapsulationProcedureREST.class);
         resources.add(server.mbr.rest.MBRRest.class);
         resources.add(server.mbr.rest.ManufacturingProcedureREST.class);
         resources.add(server.mbr.rest.PackagingMaterialREST.class);

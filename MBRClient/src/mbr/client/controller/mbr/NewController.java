@@ -7,6 +7,8 @@ package mbr.client.controller.mbr;
 
 import java.net.URL;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +28,11 @@ import mbr.client.entity.Product;
 import mbr.client.service.MBRService;
 import mbr.client.service.ProductService;
 import mbr.client.utils.DateConverter;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * FXML Controller class
@@ -113,6 +120,7 @@ public class NewController implements Initializable {
         stage.close();
     }
 
+  
    
 
 }

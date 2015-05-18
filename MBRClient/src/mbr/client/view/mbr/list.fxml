@@ -11,9 +11,10 @@
          <top>
             <AnchorPane prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: gray;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox fx:id="_headerHBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox fx:id="_headerHBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="1140.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#handleNewButton" prefWidth="100.0" text="New" />
+                        <Button mnemonicParsing="false" onAction="#handlePrintButton" prefWidth="100.0" text="Print" />
                      </children>
                      <padding>
                         <Insets left="10.0" right="10.0" />

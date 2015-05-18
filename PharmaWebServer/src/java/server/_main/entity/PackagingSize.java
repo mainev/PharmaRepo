@@ -42,7 +42,7 @@ public class PackagingSize implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "quantity")
     private Double quantity;
-    @Size(max = 5)
+    @Size(max = 15)
     @Column(name = "unit")
     private String unit;
     @Size(max = 50)
